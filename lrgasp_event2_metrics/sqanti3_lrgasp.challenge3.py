@@ -12,13 +12,13 @@ current_loop = 1
 
 import os, re, sys, subprocess, timeit, glob, copy
 import shutil
-import shutil
+import distutils.spawn
 import itertools
 import bisect
 import argparse
 import math
 import numpy as np
-from scipy import mean
+from statistics import mean
 from collections import defaultdict, namedtuple, UserDict
 from collections.abc import Iterable
 from csv import DictWriter, DictReader
@@ -88,10 +88,10 @@ GTF2GENEPRED_PROG = os.path.join(utilitiesPath, "gtfToGenePred")
 
 GFFREAD_PROG = "gffread"
 
-if shutil.which(GTF2GENEPRED_PROG) is None:
+if distutils.spawn.find_executable(GTF2GENEPRED_PROG) is None:
     print("Cannot find executable {0}. Abort!".format(GTF2GENEPRED_PROG), file=sys.stderr)
     sys.exit(-1)
-if shutil.which(GFFREAD_PROG) is None:
+if distutils.spawn.find_executable(GFFREAD_PROG) is None:
     print("Cannot find executable {0}. Abort!".format(GFFREAD_PROG), file=sys.stderr)
     sys.exit(-1)
 
@@ -120,7 +120,7 @@ FIELDS_CLASS = ['isoform', 'chrom', 'strand', 'length', 'exons', 'structural_cat
                 'polyA_motif', 'polyA_dist', 'ORF_seq', 'TSS_genomic_coord', 'TTS_genomic_coord',
                 'experiment_id', 'entry_id']
 
-RSCRIPTPATH = shutil.which('Rscript')
+RSCRIPTPATH = distutils.spawn.find_executable('Rscript')
 RSCRIPT_REPORT = 'SQANTI3_Evaluation_run.R'
 
 if os.system(RSCRIPTPATH + " --version") != 0:
@@ -1918,8 +1918,12 @@ def run(args):
             if args.ref_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
                     args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+                    subprocess.call(['gunzip', args.ref_2])
+                    args.ref_2 = args.ref_2[:-3]
                 elif args.organism == 'manatee':
                     args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+                    subprocess.call(['gunzip', args.ref_2])
+                    args.ref_2 = args.ref_2[:-3]
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
             else:
@@ -2678,9 +2682,13 @@ def main():
     print('INPUT args.genome:', args.genome)
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta.gz"
+            subprocess.call(['gunzip', args.genome])
+            args.genome = args.genome[:-3]
         elif args.organism == 'manatee':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta.gz"
+            subprocess.call(['gunzip', args.genome])
+            args.genome = args.genome[:-3]
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
