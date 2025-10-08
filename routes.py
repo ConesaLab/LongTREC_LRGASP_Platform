@@ -1,8 +1,3 @@
-from idlelib.pyparse import trans
-
-from Cython.Plex import Empty
-from numpy.matlib import empty
-
 from app import app, db
 from flask import render_template, url_for, flash, redirect, request, render_template, request, send_file, Flask, render_template, jsonify, Response, send_from_directory
 from forms import RegistrationForm, LoginForm, SubmissionForm
@@ -13,7 +8,6 @@ from werkzeug.utils import secure_filename
 from utils import allowed_file, evaluate_submission
 import subprocess
 import glob
-import threading
 from threading import Thread
 import json
 
