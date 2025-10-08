@@ -1,7 +1,21 @@
-numpy
-scipy
+# Flask app dependencies
 flask
 flask_sqlalchemy
 flask_login
 flask_wtf
 flask_bcrypt
+
+# Scientific and data dependencies
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+requests
+
+# Bioinformatics libraries
+biopython
+bx-python
+bcbiogff
+gffutils
+git+https://github.com/Magdoll/cDNA_Cupcake.git
