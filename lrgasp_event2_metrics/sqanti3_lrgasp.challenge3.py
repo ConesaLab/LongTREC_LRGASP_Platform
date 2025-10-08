@@ -12,7 +12,7 @@ current_loop = 1
 
 import os, re, sys, subprocess, timeit, glob, copy
 import shutil
-import distutils.spawn
+import shutil
 import itertools
 import bisect
 import argparse
@@ -90,10 +90,10 @@ GTF2GENEPRED_PROG = os.path.join(utilitiesPath, "gtfToGenePred")
 
 GFFREAD_PROG = "gffread"
 
-if distutils.spawn.find_executable(GTF2GENEPRED_PROG) is None:
+if shutil.which(GTF2GENEPRED_PROG) is None:
     print("Cannot find executable {0}. Abort!".format(GTF2GENEPRED_PROG), file=sys.stderr)
     sys.exit(-1)
-if distutils.spawn.find_executable(GFFREAD_PROG) is None:
+if shutil.which(GFFREAD_PROG) is None:
     print("Cannot find executable {0}. Abort!".format(GFFREAD_PROG), file=sys.stderr)
     sys.exit(-1)
 
@@ -122,7 +122,7 @@ FIELDS_CLASS = ['isoform', 'chrom', 'strand', 'length', 'exons', 'structural_cat
                 'polyA_motif', 'polyA_dist', 'ORF_seq', 'TSS_genomic_coord', 'TTS_genomic_coord',
                 'experiment_id', 'entry_id']
 
-RSCRIPTPATH = distutils.spawn.find_executable('Rscript')
+RSCRIPTPATH = shutil.which('Rscript')
 RSCRIPT_REPORT = 'SQANTI3_Evaluation_run.R'
 
 if os.system(RSCRIPTPATH + " --version") != 0:
