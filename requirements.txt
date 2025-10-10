@@ -4,6 +4,7 @@ flask_sqlalchemy
 flask_login
 flask_wtf
 flask_bcrypt
+Werkzeug
 
 # Scientific and data dependencies
 numpy
@@ -16,5 +17,5 @@ requests
 # Bioinformatics libraries
 biopython
 bx-python
-bcbiogff
+git+https://github.com/chapmanb/bcbb.git#egg=BCBio
 gffutils
