@@ -2679,6 +2679,7 @@ def main():
             os.makedirs(args.dir)
 
     print('INPUT args.genome:', args.genome)
+    print('current working directory: ', os.getcwd())
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
             args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta.gz"
