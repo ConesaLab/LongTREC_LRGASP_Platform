@@ -83,7 +83,7 @@ DESALT_CMD = "deSALT aln {dir} {i} -t {cpus} -x ccs -o {o}"
 GMSP_PROG = os.path.join(utilitiesPath, "gmst", "gmst.pl")
 GMST_CMD = "perl " + GMSP_PROG + " -faa --strand direct --fnn --output {o} {i}"
 
-GTF2GENEPRED_PROG = "/home/wouter/local/bin/gtfToGenePred"
+GTF2GENEPRED_PROG = os.path.join(utilitiesPath, "gtfToGenePred")
 
 GFFREAD_PROG = "gffread"
 
