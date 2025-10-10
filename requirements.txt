@@ -18,4 +18,3 @@ biopython
 bx-python
 bcbiogff
 gffutils
-git+https://github.com/Magdoll/cDNA_Cupcake.git
