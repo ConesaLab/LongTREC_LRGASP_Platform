@@ -2679,20 +2679,15 @@ def main():
             os.makedirs(args.dir)
 
     print('INPUT args.genome:', args.genome)
-    print('current working directory: ', os.getcwd())
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
             args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta.gz"
             subprocess.call(['gunzip', args.genome])
             args.genome = args.genome[:-3]
         elif args.organism == 'manatee':
-            print('test1')
             args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta.gz"
-            print('args.genome 2:', args.genome)
             subprocess.call(['gunzip', args.genome])
-            print('args.genome 3:', args.genome)
             args.genome = args.genome[:-3]
-            print('args.genome 4:', args.genome)
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
