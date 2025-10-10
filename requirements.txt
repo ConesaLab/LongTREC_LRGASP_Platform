@@ -17,5 +17,5 @@ requests
 # Bioinformatics libraries
 biopython
 bx-python
-git+https://github.com/chapmanb/bcbb.git#egg=BCBio
+git+https://github.com/chapmanb/bcbb.git@master#subdirectory=gff
 gffutils
