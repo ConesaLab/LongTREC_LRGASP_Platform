@@ -2685,9 +2685,14 @@ def main():
             subprocess.call(['gunzip', args.genome])
             args.genome = args.genome[:-3]
         elif args.organism == 'manatee':
+            print('test1')
             args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta.gz"
+            print('test2')
             subprocess.call(['gunzip', args.genome])
+            print('test3')
             args.genome = args.genome[:-3]
+            print('test4')
+            print(args.genome)
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
