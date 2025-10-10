@@ -83,7 +83,7 @@ DESALT_CMD = "deSALT aln {dir} {i} -t {cpus} -x ccs -o {o}"
 GMSP_PROG = os.path.join(utilitiesPath, "gmst", "gmst.pl")
 GMST_CMD = "perl " + GMSP_PROG + " -faa --strand direct --fnn --output {o} {i}"
 
-GTF2GENEPRED_PROG = os.path.join(utilitiesPath, "gtfToGenePred")
+GTF2GENEPRED_PROG = "/home/wouter/local/bin/gtfToGenePred"
 
 GFFREAD_PROG = "gffread"
 
@@ -1917,12 +1917,8 @@ def run(args):
             if args.ref_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
                     args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
-                    subprocess.call(['gunzip', args.ref_2])
-                    args.ref_2 = args.ref_2[:-3]
                 elif args.organism == 'manatee':
                     args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
-                    subprocess.call(['gunzip', args.ref_2])
-                    args.ref_2 = args.ref_2[:-3]
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
             else:
@@ -2681,13 +2677,9 @@ def main():
     print('INPUT args.genome:', args.genome)
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta.gz"
-            subprocess.call(['gunzip', args.genome])
-            args.genome = args.genome[:-3]
+            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
         elif args.organism == 'manatee':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta.gz"
-            subprocess.call(['gunzip', args.genome])
-            args.genome = args.genome[:-3]
+            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
