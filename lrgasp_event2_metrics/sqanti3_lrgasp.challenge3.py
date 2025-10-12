@@ -693,7 +693,7 @@ def reference_parser(args, genome_chroms):
     """
     global referenceFiles
 
-    referenceFiles = os.path.join(args.dir + "refAnnotation_" + args.output + ".genePred")
+    referenceFiles = os.path.join(args.dir + "/refAnnotation_" + args.output + ".genePred")
 
     print("**** Parsing Reference Transcriptome....", file=sys.stdout)
     status = 'Parsing Reference Transcriptome...'
