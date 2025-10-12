@@ -22,6 +22,9 @@ from collections import defaultdict, namedtuple, UserDict
 from collections.abc import Iterable
 from csv import DictWriter, DictReader
 from multiprocessing import Process
+import tempfile
+tempfile.tempdir = '/home/wouter/tmp'
+
 
 
 status = 'Importing Modules...'
@@ -514,7 +517,6 @@ def correctionPlusORFpred(args, genome_dict):
 
     corrGTF, corrSAM, corrFASTA, corrORF = get_corr_filenames(args)
 
-    print("args.cpus is: ", args.cpus)
     n_cpu = max(1, args.cpus // args.chunks)
 
     # Step 1. IF GFF or GTF is provided, make it into a genome-based fasta
