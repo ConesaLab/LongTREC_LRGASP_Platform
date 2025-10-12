@@ -22,9 +22,6 @@ from collections import defaultdict, namedtuple, UserDict
 from collections.abc import Iterable
 from csv import DictWriter, DictReader
 from multiprocessing import Process
-import tempfile
-tempfile.tempdir = '/home/wouter/tmp'
-
 
 
 status = 'Importing Modules...'
