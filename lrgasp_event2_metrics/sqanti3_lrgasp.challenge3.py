@@ -704,9 +704,11 @@ def reference_parser(args, genome_chroms):
 
     ## gtf to genePred
     if not args.genename:
+        print('test if not args.genename')
         subprocess.call([GTF2GENEPRED_PROG, args.annotation, referenceFiles, '-genePredExt', '-allErrors',
                          '-ignoreGroupsWithoutExons'])
     else:
+        print('test if args.genename')
         subprocess.call([GTF2GENEPRED_PROG, args.annotation, referenceFiles, '-genePredExt', '-allErrors',
                          '-ignoreGroupsWithoutExons', '-geneNameAsName2'])
 
