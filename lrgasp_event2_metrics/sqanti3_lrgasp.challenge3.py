@@ -84,6 +84,7 @@ GMSP_PROG = os.path.join(utilitiesPath, "gmst", "gmst.pl")
 GMST_CMD = "perl " + GMSP_PROG + " -faa --strand direct --fnn --output {o} {i}"
 
 GTF2GENEPRED_PROG = os.path.join(utilitiesPath, "gtfToGenePred")
+print("GTF2GENEPRED_PROG is: ", GTF2GENEPRED_PROG)
 
 GFFREAD_PROG = "gffread"
 
