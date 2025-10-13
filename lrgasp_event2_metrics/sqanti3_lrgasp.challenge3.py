@@ -1990,15 +1990,23 @@ def run(args):
         # NOTE: can't use LazyFastaReader because inefficient. Bring the whole genome in!
         genome_dict = dict((r.name, r) for r in SeqIO.parse(open(args.genome), 'fasta'))
 
+        print('test 1', file=sys.stderr)
+
         ## correction of sequences and ORF prediction (if gtf provided instead of fasta file, correction of sequences will be skipped)
         orfDict = correctionPlusORFpred(args, genome_dict)
+
+        print('test 2', file=sys.stderr)
 
         ## parse reference id (GTF) to dicts
         refs_1exon_by_chr, refs_exons_by_chr, junctions_by_chr, junctions_by_gene, start_ends_by_gene = reference_parser(
             args, list(genome_dict.keys()))
 
+        print('test 3', file=sys.stderr)
+
         ## parse query isoforms
         isoforms_by_chr = isoforms_parser(args)
+
+        print('test 4', file=sys.stderr)
 
         ## Run indel computation if sam exists
         # indelsJunc: dict of pbid --> list of junctions near indel (in Interval format)
@@ -2008,6 +2016,8 @@ def run(args):
         else:
             indelsJunc = None
             indelsTotal = None
+
+        print('test 5', file=sys.stderr)
 
         # isoform classification + intra-priming + id and junction characterization
         isoforms_info = isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_by_chr,
