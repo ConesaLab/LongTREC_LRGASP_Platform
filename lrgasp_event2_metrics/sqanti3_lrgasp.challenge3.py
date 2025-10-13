@@ -2759,7 +2759,7 @@ def main():
     print('USED args.coverage:', args.coverage, file=sys.stderr)
 
     if args.dataset2 != 'NA':
-        print('INPUT args.isoforms2:', args.isoforms2)
+        print('INPUT args.isoforms2:', args.isoforms2, file=sys.stderr)
         args.isoforms2 = os.path.join("../../", args.isoforms2)
         if not os.path.isfile(args.isoforms2):
             print("ERROR: Input isoforms2 {0} doesn't exist. Abort!".format(args.isoforms2), file=sys.stderr)
@@ -2767,7 +2767,7 @@ def main():
         elif args.isoforms2[-3:] == ".gz":
             subprocess.call(['gunzip', args.isoforms2])
             args.isoforms2 = args.isoforms2[:-3]
-        print('USED args.isoforms2:', args.isoforms2)
+        print('USED args.isoforms2:', args.isoforms2, file=sys.stderr)
 
         print("Cleaning up isoform IDs...", file=sys.stderr)
         args.isoforms2 = rename_isoform_seqids(args.isoforms2, args.force_id_ignore)
@@ -2788,7 +2788,7 @@ def main():
     args.novel_gene_prefix = None
     # Print out parameters so can be put into report PDF later
     args.doc = os.path.join(os.path.abspath(args.dir), args.output + ".params.txt")
-    print("Write arguments to {0}...".format(args.doc, file=sys.stdout))
+    print("Write arguments to {0}...".format(args.doc, file=sys.stderr))
     with open(args.doc, 'w') as f:
         f.write("Version\t" + __version__ + "\n")
         f.write("Input\t" + os.path.basename(args.isoforms) + "\n")
@@ -2804,11 +2804,10 @@ def main():
         f.write("PolyAPeak\t" + (os.path.basename(args.polyA_peak) if args.polyA_peak is not None else "NA") + "\n")
         f.write("IsFusion\t" + str(args.is_fusion) + "\n")
 
-    print('WITHOUT THIS SECTION?!?!?!?!?!?!?!?!?!?!?!?!')
     if args.dataset2 != 'NA':
         # Print out parameters so can be put into report PDF later
         args.doc = os.path.join(os.path.abspath(args.dir), '../results_file2', args.output + ".params.txt")
-        print("Write arguments to {0}...".format(args.doc, file=sys.stdout))
+        print("Write arguments to {0}...".format(args.doc, file=sys.stderr))
         with open(args.doc, 'w') as f:
             f.write("Version\t" + __version__ + "\n")
             f.write("Input\t" + os.path.basename(args.isoforms2) + "\n")
@@ -2827,7 +2826,7 @@ def main():
             f.write("IsFusion\t" + str(args.is_fusion) + "\n")
 
     # Running functionality
-    print("**** Running SQANTI3...", file=sys.stdout)
+    print("**** Running SQANTI3...", file=sys.stderr)
     print(f'PROGRESS: {5}')
     if args.chunks == 1:
         run(args)
