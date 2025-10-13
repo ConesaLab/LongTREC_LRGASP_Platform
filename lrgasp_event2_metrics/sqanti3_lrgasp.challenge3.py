@@ -514,8 +514,7 @@ def correctionPlusORFpred(args, genome_dict):
 
     corrGTF, corrSAM, corrFASTA, corrORF = get_corr_filenames(args)
 
-    #n_cpu = max(1, args.cpus // args.chunks)
-    n_cpu = 2
+    n_cpu = max(1, args.cpus // args.chunks)
 
     # Step 1. IF GFF or GTF is provided, make it into a genome-based fasta
     #         IF sequence is provided, align as SAM then correct with genome
