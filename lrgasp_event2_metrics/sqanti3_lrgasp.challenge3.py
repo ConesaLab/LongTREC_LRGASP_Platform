@@ -609,9 +609,9 @@ def correctionPlusORFpred(args, genome_dict):
     # ORF generation
     print("**** Predicting ORF sequences...", file=sys.stdout)
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {30}')
+        print(f'PROGRESS: {30}', file=sys.stderr)
     else:
-        print(f'PROGRESS: {15}')
+        print(f'PROGRESS: {15}', file=sys.stderr)
 
     print('test1')
     gmst_dir = os.path.join(os.path.abspath(args.dir), "GMST")
@@ -696,12 +696,12 @@ def reference_parser(args, genome_chroms):
 
     referenceFiles = os.path.join(args.dir + "/refAnnotation_" + args.output + ".genePred")
 
-    print("**** Parsing Reference Transcriptome....", file=sys.stdout)
+    print("**** Parsing Reference Transcriptome....", file=sys.stderr)
     status = 'Parsing Reference Transcriptome...'
-    print(f'STATUS: {status}')
+    print(f'STATUS: {status}', file=sys.stderr)
 
     if os.path.exists(referenceFiles):
-        print("{0} already exists. Using it.".format(referenceFiles), file=sys.stdout)
+        print("{0} already exists. Using it.".format(referenceFiles), file=sys.stderr)
 
     ## gtf to genePred
     if not args.genename:
@@ -772,9 +772,9 @@ def isoforms_parser(args):
 
     print("**** Parsing Isoforms....", file=sys.stderr)
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {40}')
+        print(f'PROGRESS: {40}', file=sys.stderr)
     else:
-        print(f'PROGRESS: {20}')
+        print(f'PROGRESS: {20}', file=sys.stderr)
 
     # gtf to genePred
     cmd = GTF2GENEPRED_PROG + " {0} {1} -genePredExt -allErrors -ignoreGroupsWithoutExons".format( \
@@ -1631,9 +1631,9 @@ def isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_b
     # running classification
     print("**** Performing Classification of Isoforms....", file=sys.stdout)
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {50}')
+        print(f'PROGRESS: {50}', file=sys.stderr)
     else:
-        print(f'PROGRESS: {25}')
+        print(f'PROGRESS: {25}', file=sys.stderr)
 
     accepted_canonical_sites = list(args.sites.split(","))
 
@@ -1974,17 +1974,17 @@ def run(args):
             outputJuncPath2 = outputJuncPath
             args.dir = os.getcwd()
 
-        print('STARTING CYCLE ', i, '/', loop, sep='')
-        print('args.dir:', args.dir)
-        print("**** Parsing provided files....", file=sys.stdout)
+        print('STARTING CYCLE ', i, '/', loop, sep='', file=sys.stderr)
+        print('args.dir:', args.dir, file=sys.stderr)
+        print("**** Parsing provided files....", file=sys.stderr)
         if args.dataset2 == 'NA' or current_loop == 2:
-            print(f'PROGRESS: {20}')
+            print(f'PROGRESS: {20}', file=sys.stderr)
         else:
-            print(f'PROGRESS: {10}')
+            print(f'PROGRESS: {10}', file=sys.stderr)
 
         outputClassPath, outputJuncPath = get_class_junc_filenames(args)
 
-        print("Reading genome fasta {0}....".format(args.genome), file=sys.stdout)
+        print("Reading genome fasta {0}....".format(args.genome), file=sys.stderr)
 
         # NOTE: can't use LazyFastaReader because inefficient. Bring the whole genome in!
         genome_dict = dict((r.name, r) for r in SeqIO.parse(open(args.genome), 'fasta'))
@@ -2021,9 +2021,9 @@ def run(args):
         ## RT-switching computation
         print("**** RT-switching computation....", file=sys.stderr)
         if args.dataset2 == 'NA' or current_loop == 2:
-            print(f'PROGRESS: {60}')
+            print(f'PROGRESS: {60}', file=sys.stderr)
         else:
-            print(f'PROGRESS: {30}')
+            print(f'PROGRESS: {30}', file=sys.stderr)
 
         # RTS_info: dict of (pbid) -> list of RT junction. if RTS_info[pbid] == [], means all junctions are non-RT.
         RTS_info = rts([outputJuncPath + "_tmp", args.genome, "-a"], genome_dict)
@@ -2167,9 +2167,9 @@ def run(args):
         #### Printing output file:
         print("**** Writing output files....", file=sys.stderr)
         if args.dataset2 == 'NA' or current_loop == 2:
-            print(f'PROGRESS: {70}')
+            print(f'PROGRESS: {70}', file=sys.stderr)
         else:
-            print(f'PROGRESS: {35}')
+            print(f'PROGRESS: {35}', file=sys.stderr)
 
         # sort isoform keys
         iso_keys = list(isoforms_info.keys())
@@ -2193,7 +2193,7 @@ def run(args):
                 fout_junc.writerow(r)
         # Run BUSCO analysis
         status = 'Running BUSCO...'
-        print(f'STATUS: {status}')
+        print(f'STATUS: {status}', file=sys.stderr)
 
         if i == 1:
             busco_tsv1 = run_BUSCO(corrFASTA, args.cpus, os.getcwd())
@@ -2205,11 +2205,11 @@ def run(args):
 
     ## Generating report
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {80}')
+        print(f'PROGRESS: {80}', file=sys.stderr)
     else:
-        print(f'PROGRESS: {40}')
+        print(f'PROGRESS: {40}', file=sys.stderr)
     status = 'Generating Report...'
-    print(f'STATUS: {status}')
+    print(f'STATUS: {status}', file=sys.stderr)
     if not args.skip_report:
         print("**** Generating SQANTI3 report....", file=sys.stderr)
         rdata_out = os.path.join(os.path.abspath(args.dir), '../results_file1', args.output + "_Rdata")
@@ -2274,7 +2274,7 @@ def run(args):
     os.remove(outputClassPath + "_tmp")
     os.remove(outputJuncPath + "_tmp")
 
-    print(f'PROGRESS: {95}')
+    print(f'PROGRESS: {95}', file=sys.stderr)
     print("SQANTI3 complete in {0} sec.".format(stop3 - start3), file=sys.stderr)
 
 
@@ -2827,7 +2827,7 @@ def main():
 
     # Running functionality
     print("**** Running SQANTI3...", file=sys.stderr)
-    print(f'PROGRESS: {5}')
+    print(f'PROGRESS: {5}', file=sys.stderr)
     if args.chunks == 1:
         run(args)
         if args.isoAnnotLite:
