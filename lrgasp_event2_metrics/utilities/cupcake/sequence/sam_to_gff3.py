@@ -59,7 +59,8 @@ def convert_sam_rec_to_gff3_rec(r, source, qid_index_dict=None):
 #                       "matches": matches, "mismatches": mismatches, "indels": indels}
 
     # gene line, one per record
-    top_feature = SeqFeature(FeatureLocation(r.sStart, r.sEnd), type="gene", strand=strand, qualifiers=gene_qualifiers)
+    #top_feature = SeqFeature(FeatureLocation(r.sStart, r.sEnd), type="gene", strand=strand, qualifiers=gene_qualifiers)
+    top_feature = SeqFeature(FeatureLocation(r.sStart, r.sEnd, strand=strand), type="gene", qualifiers=gene_qualifiers)
     # mRNA line, one per record
     top_feature.sub_features = [] #top_feature.sub_features = [SeqFeature(FeatureLocation(r.sStart, r.sEnd), type="mRNA", strand=strand, qualifiers=mRNA_qualifiers)]
 
