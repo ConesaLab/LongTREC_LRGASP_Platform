@@ -97,7 +97,7 @@ if shutil.which(GFFREAD_PROG) is None:
 
 seqid_rex1 = re.compile(r'PB\.(\d+)\.(\d+)$')
 seqid_rex2 = re.compile(r'PB\.(\d+)\.(\d+)\|\S+')
-seqid_fusion = re.compile(r"PBfusion\.(\d+)\.(\d+)\S*")
+seqid_fusion = re.compile(r'PBfusion\.(\d+)\.(\d+)\S*')
 
 FIELDS_JUNC = ['isoform', 'chrom', 'strand', 'junction_number', 'genomic_start_coord',
                'genomic_end_coord', 'transcript_coord', 'junction_category',
@@ -622,7 +622,7 @@ def correctionPlusORFpred(args, genome_dict):
 
     print('test2')
     # sequence ID example: PB.2.1 gene_4|GeneMark.hmm|264_aa|+|888|1682
-    gmst_rex = re.compile('(\S+\t\S+\|GeneMark.hmm)\|(\d+)_aa\|(\S)\|(\d+)\|(\d+)')
+    gmst_rex = re.compile(r'(\S+\t\S+\|GeneMark.hmm)\|(\d+)_aa\|(\S)\|(\d+)\|(\d+)')
     orfDict = {}  # GMST seq id --> myQueryProteins object
     if args.skipORF:
         print("WARNING: Skipping ORF prediction. All isoforms will be non-coding!", file=sys.stderr)
@@ -1632,9 +1632,9 @@ def isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_b
     # running classification
     print("**** Performing Classification of Isoforms....", file=sys.stdout)
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {50}', file=sys.stderr)
+        print(f'PROGRESS: {50}', file=sys.stdout)
     else:
-        print(f'PROGRESS: {25}', file=sys.stderr)
+        print(f'PROGRESS: {25}', file=sys.stdout)
 
     accepted_canonical_sites = list(args.sites.split(","))
 
