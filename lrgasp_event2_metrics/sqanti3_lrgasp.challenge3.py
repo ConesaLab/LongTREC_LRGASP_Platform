@@ -2715,7 +2715,7 @@ def main():
         print("Cleaning up isoform IDs...", file=sys.stderr)
         args.isoforms = rename_isoform_seqids(args.isoforms, args.force_id_ignore)
         print("test1")
-        print("Cleaned up isoform fasta file written to: {0}".format(args.isoforms), file=sys.stderr)
+        print("Cleaned up isoform (test) fasta file written to: {0}".format(args.isoforms), file=sys.stderr)
 
         print("test1")
         print('test3')
