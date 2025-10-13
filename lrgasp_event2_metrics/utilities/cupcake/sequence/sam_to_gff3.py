@@ -69,7 +69,7 @@ def convert_sam_rec_to_gff3_rec(r, source, qid_index_dict=None):
     for i,e in enumerate(r.segments):
         _id = "{0}.exon{1}".format(r.qID,i+1)
         exon_qual = {"source": source, "ID": _id, "Name": _id}
-        top_feature.sub_features.append(SeqFeature(FeatureLocation(e.start, e.end), type="exon", strand=strand, qualifiers=exon_qual))
+        top_feature.sub_features.append(SeqFeature(FeatureLocation(e.start, e.end, strand=strand), type="exon", qualifiers=exon_qual))
     rec.features = [top_feature]
     return rec
 
