@@ -2714,16 +2714,17 @@ def main():
 
         print("Cleaning up isoform IDs...", file=sys.stderr)
         args.isoforms = rename_isoform_seqids(args.isoforms, args.force_id_ignore)
-        print('test1')
+        print("test1")
         print("Cleaned up isoform fasta file written to: {0}".format(args.isoforms), file=sys.stderr)
 
-        print('test1')
+        print("test1")
+        print('test3')
         args.isoforms1 = args.isoforms
         args.tool1 = args.tool
         args.platform1 = args.platform
         args.lib_prep1 = args.lib_prep
         args.data_cat1 = args.data_cat
-        print('test2')
+        print("test2")
 
     print('INPUT args.annotation:', args.annotation)
     if args.annotation == 'LRGASP_DATA':
