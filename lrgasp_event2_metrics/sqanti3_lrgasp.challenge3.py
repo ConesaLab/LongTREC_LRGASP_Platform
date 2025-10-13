@@ -2724,7 +2724,7 @@ def main():
         args.data_cat1 = args.data_cat
         print("test2", file=sys.stderr)
 
-    print('INPUT args.annotation:', args.annotation)
+    print('INPUT args.annotation:', args.annotation, file=sys.stderr)
     if args.annotation == 'LRGASP_DATA':
         if args.organism == 'mouse':
             args.annotation = "../../LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
@@ -2741,9 +2741,9 @@ def main():
         args.annotation = os.path.abspath(os.path.join("../../", args.annotation))
         print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.annotation), file=sys.stderr)
         sys.exit()
-    print('USED args.annotation:', args.annotation)
+    print('USED args.annotation:', args.annotation, file=sys.stderr)
 
-    print('INPUT args.coverage:', args.coverage)
+    print('INPUT args.coverage:', args.coverage, file=sys.stderr)
     if args.coverage == 'LRGASP_DATA':
         if args.organism == 'mouse':
             args.coverage = "../../LONGTrec_LRGASP_Platform/gold_std_ES"
@@ -2756,7 +2756,7 @@ def main():
         args.coverage = None
     else:
         args.coverage = os.path.abspath(os.path.join("../../uploads/coverage_files", args.coverage_dir))
-    print('USED args.coverage:', args.coverage)
+    print('USED args.coverage:', args.coverage, file=sys.stderr)
 
     if args.dataset2 != 'NA':
         print('INPUT args.isoforms2:', args.isoforms2)
