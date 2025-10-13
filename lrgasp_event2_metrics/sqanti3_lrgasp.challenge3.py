@@ -514,7 +514,8 @@ def correctionPlusORFpred(args, genome_dict):
 
     corrGTF, corrSAM, corrFASTA, corrORF = get_corr_filenames(args)
 
-    n_cpu = max(1, args.cpus // args.chunks)
+    #n_cpu = max(1, args.cpus // args.chunks)
+    n_cpu = 2
 
     # Step 1. IF GFF or GTF is provided, make it into a genome-based fasta
     #         IF sequence is provided, align as SAM then correct with genome
@@ -2013,7 +2014,7 @@ def run(args):
                                               junctions_by_chr,
                                               junctions_by_gene, start_ends_by_gene, genome_dict, indelsJunc, orfDict)
 
-        print("Number of classified isoforms: {0}".format(len(isoforms_info)), file=sys.stdout)
+        print("Number of classified isoforms: {0}".format(len(isoforms_info)), file=sys.stderr)
 
         write_collapsed_GFF_with_CDS(isoforms_info, corrGTF, corrGTF + '.cds.gff')
         # os.rename(corrGTF+'.cds.gff', corrGTF)
@@ -2714,15 +2715,13 @@ def main():
 
         print("Cleaning up isoform IDs...", file=sys.stderr)
         args.isoforms = rename_isoform_seqids(args.isoforms, args.force_id_ignore)
-        print("Cleaned up isoform (test) fasta file written to: {0}".format(args.isoforms), file=sys.stderr)
+        print("Cleaned up isoform fasta file written to: {0}".format(args.isoforms), file=sys.stderr)
 
-        print("test1", file=sys.stderr)
         args.isoforms1 = args.isoforms
         args.tool1 = args.tool
         args.platform1 = args.platform
         args.lib_prep1 = args.lib_prep
         args.data_cat1 = args.data_cat
-        print("test2", file=sys.stderr)
 
     print('INPUT args.annotation:', args.annotation, file=sys.stderr)
     if args.annotation == 'LRGASP_DATA':
