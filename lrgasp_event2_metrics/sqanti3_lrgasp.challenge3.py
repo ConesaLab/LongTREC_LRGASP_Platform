@@ -538,8 +538,7 @@ def correctionPlusORFpred(args, genome_dict):
                                           o=corrSAM)
                 elif args.aligner_choice == "minimap2":
                     print("****Aligning reads with Minimap2...", file=sys.stderr)
-
-                    print("****Aligning reads with Minimap2...", file=sys.stderr)
+                    print(os.getcwd(), file=sys.stderr)
                     cmd = MINIMAP2_CMD.format(
                         cpus=n_cpu,
                         sense=args.sense,
@@ -2725,20 +2724,20 @@ def main():
     print('INPUT args.genome:', args.genome)
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+            args.genome = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
         elif args.organism == 'manatee':
-            args.genome = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+            args.genome = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
-        args.genome = os.path.abspath(os.path.join('../../', args.genome))
+        args.genome = os.path.abspath(os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.genome))
     if not os.path.isfile(args.genome):
         print("ERROR: genome fasta {0} doesn't exist. Abort!".format(args.genome), file=sys.stderr)
         sys.exit()
     print('USED args.genome:', args.genome)
 
     print('INPUT args.isoforms:', args.isoforms)
-    args.isoforms = os.path.join("../../", args.isoforms)
+    args.isoforms = os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.isoforms)
     if not os.path.isfile(args.isoforms):
         print("ERROR: Input isoforms {0} doesn't exist. Abort!".format(args.isoforms), file=sys.stderr)
         sys.exit()
@@ -2770,18 +2769,18 @@ def main():
     print('INPUT args.annotation:', args.annotation, file=sys.stderr)
     if args.annotation == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.annotation = "../../LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
+            args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
         elif args.organism == 'manatee':
-            args.annotation = "../../LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
+            args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
         if not os.path.isfile(args.annotation):
             print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.annotation), file=sys.stderr)
             sys.exit()
     elif args.annotation == 'NA':
-        args.annotation = "../../LONGTrec_LRGASP_Platform/empty_anno.gtf"
+        args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
     else:
-        args.annotation = os.path.abspath(os.path.join("../../", args.annotation))
+        args.annotation = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.annotation))
         print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.annotation), file=sys.stderr)
         sys.exit()
     print('USED args.annotation:', args.annotation, file=sys.stderr)
@@ -2789,9 +2788,9 @@ def main():
     print('INPUT args.coverage:', args.coverage, file=sys.stderr)
     if args.coverage == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.coverage = "../../LONGTrec_LRGASP_Platform/gold_std_ES"
+            args.coverage = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
         elif args.organism == 'manatee':
-            args.coverage = "../../LONGTrec_LRGASP_Platform/gold_std_manatee"
+            args.coverage = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
         else:
             print('ERROR: Coverage Directory cannot be set to "LRGASP Data" when Organism is set to "Custom"')
             sys.exit()
