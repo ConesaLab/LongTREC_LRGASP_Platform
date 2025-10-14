@@ -539,11 +539,42 @@ def correctionPlusORFpred(args, genome_dict):
                 elif args.aligner_choice == "minimap2":
                     print("****Aligning reads with Minimap2...", file=sys.stderr)
 
-                    cmd = MINIMAP2_CMD.format(cpus=n_cpu,
-                                              sense=args.sense,
-                                              g=args.genome,
-                                              i=args.isoforms,
-                                              o=corrSAM)
+                    print("****Aligning reads with Minimap2...", file=sys.stderr)
+                    cmd = MINIMAP2_CMD.format(
+                        cpus=n_cpu,
+                        sense=args.sense,
+                        g=args.genome,
+                        i=args.isoforms,
+                        o=corrSAM
+                    )
+
+                    print(f"[DEBUG] Running command:\n{cmd}\n", file=sys.stderr)
+
+                    process = subprocess.Popen(
+                        cmd,
+                        shell=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        universal_newlines=True,
+                        bufsize=1
+                    )
+
+                    # Capture stderr in real-time
+                    for line in process.stderr:
+                        line = line.strip()
+                        print(line)  # or send to your web UI / progress bar
+                        # Example: check for keywords to update progress %
+                        if "loaded/built the index" in line:
+                            print("Progress: 10% (index built)")
+                        elif "mapped" in line:
+                            print("Progress: 50% (mapping reads)")
+
+                    process.wait()
+
+                    if process.returncode != 0:
+                        print(f"[ERROR] Minimap2 failed with exit code {process.returncode}")
+                    else:
+                        print("Minimap2 completed successfully.")
                 elif args.aligner_choice == "deSALT":
                     print("****Aligning reads with deSALT...", file=sys.stderr)
                     cmd = DESALT_CMD.format(cpus=n_cpu,
