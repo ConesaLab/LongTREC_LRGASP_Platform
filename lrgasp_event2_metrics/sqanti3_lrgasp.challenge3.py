@@ -538,41 +538,12 @@ def correctionPlusORFpred(args, genome_dict):
                                           o=corrSAM)
                 elif args.aligner_choice == "minimap2":
                     print("****Aligning reads with Minimap2...", file=sys.stderr)
-                    cmd = MINIMAP2_CMD.format(
-                        cpus=n_cpu,
-                        sense=args.sense,
-                        g=args.genome,
-                        i=args.isoforms,
-                        o=corrSAM
-                    )
 
-                    print(f"[DEBUG] Running command:\n{cmd}\n", file=sys.stderr)
-
-                    process = subprocess.Popen(
-                        cmd,
-                        shell=True,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                        universal_newlines=True,
-                        bufsize=1
-                    )
-
-                    # Capture stderr in real-time
-                    for line in process.stderr:
-                        line = line.strip()
-                        print(line)  # or send to your web UI / progress bar
-                        # Example: check for keywords to update progress %
-                        if "loaded/built the index" in line:
-                            print("Progress: 10% (index built)")
-                        elif "mapped" in line:
-                            print("Progress: 50% (mapping reads)")
-
-                    process.wait()
-
-                    if process.returncode != 0:
-                        print(f"[ERROR] Minimap2 failed with exit code {process.returncode}")
-                    else:
-                        print("Minimap2 completed successfully.")
+                    cmd = MINIMAP2_CMD.format(cpus=n_cpu,
+                                              sense=args.sense,
+                                              g=args.genome,
+                                              i=args.isoforms,
+                                              o=corrSAM)
                 elif args.aligner_choice == "deSALT":
                     print("****Aligning reads with deSALT...", file=sys.stderr)
                     cmd = DESALT_CMD.format(cpus=n_cpu,
@@ -584,9 +555,11 @@ def correctionPlusORFpred(args, genome_dict):
                     sys.exit(-1)
                 corrBAM = get_corrBam_from_corrSam(corrSAM)
 
+            print('test for err_correct', file=sys.sterr)
             # error correct the genome (input: corrSAM, output: corrFASTA)
             err_correct(args.genome, corrSAM, corrFASTA, genome_dict=genome_dict)
             # convert SAM to GFF --> GTF
+            print('test for SAM to GFF', file=sys.sterr)
             convert_sam_to_gff3(corrSAM, corrGTF + '.tmp',
                                 source=os.path.basename(args.genome).split('.')[0])  # convert SAM to GFF3
             cmd = "{p} {o}.tmp -T -o {o}".format(o=corrGTF, p=GFFREAD_PROG)
@@ -594,7 +567,7 @@ def correctionPlusORFpred(args, genome_dict):
                 print("ERROR running cmd: {0}".format(cmd), file=sys.stderr)
                 sys.exit(-1)
         else:
-            print("Skipping aligning of sequences because GTF file was provided.", file=sys.stdout)
+            print("Skipping aligning of sequences because GTF file was provided.", file=sys.stderr)
 
             ind = 0
             with open(args.isoforms, 'r') as isoforms_gtf:
