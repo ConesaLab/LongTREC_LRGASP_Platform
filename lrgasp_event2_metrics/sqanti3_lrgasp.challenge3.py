@@ -450,7 +450,6 @@ def write_collapsed_GFF_with_CDS(isoforms_info, input_gff, output_gff):
 
 
 def get_corr_filenames(args, dir=None):
-    print('test corr file names', file=sys.stderr)
     d = dir if dir is not None else args.dir
     corrPathPrefix = os.path.join(d, args.output)
     corrGTF = corrPathPrefix + "_corrected.gtf"
@@ -521,7 +520,6 @@ def correctionPlusORFpred(args, genome_dict):
     # Step 1. IF GFF or GTF is provided, make it into a genome-based fasta
     #         IF sequence is provided, align as SAM then correct with genome
 
-    print('start aligning reads', file=sys.stderr)
     if os.path.exists(corrFASTA):
         if current_loop == 1:
             print("Error corrected FASTA {0} already exists. Using it...".format(corrFASTA), file=sys.stderr)
@@ -540,13 +538,41 @@ def correctionPlusORFpred(args, genome_dict):
                                           o=corrSAM)
                 elif args.aligner_choice == "minimap2":
                     print("****Aligning reads with Minimap2...", file=sys.stderr)
-                    print('minimap test', file=sys.stdout)
-                    
-                    cmd = MINIMAP2_CMD.format(cpus=n_cpu,
-                                              sense=args.sense,
-                                              g=args.genome,
-                                              i=args.isoforms,
-                                              o=corrSAM)
+                    cmd = MINIMAP2_CMD.format(
+                        cpus=n_cpu,
+                        sense=args.sense,
+                        g=args.genome,
+                        i=args.isoforms,
+                        o=corrSAM
+                    )
+
+                    print(f"[DEBUG] Running command:\n{cmd}\n", file=sys.stderr)
+
+                    process = subprocess.Popen(
+                        cmd,
+                        shell=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        universal_newlines=True,
+                        bufsize=1
+                    )
+
+                    # Capture stderr in real-time
+                    for line in process.stderr:
+                        line = line.strip()
+                        print(line)  # or send to your web UI / progress bar
+                        # Example: check for keywords to update progress %
+                        if "loaded/built the index" in line:
+                            print("Progress: 10% (index built)")
+                        elif "mapped" in line:
+                            print("Progress: 50% (mapping reads)")
+
+                    process.wait()
+
+                    if process.returncode != 0:
+                        print(f"[ERROR] Minimap2 failed with exit code {process.returncode}")
+                    else:
+                        print("Minimap2 completed successfully.")
                 elif args.aligner_choice == "deSALT":
                     print("****Aligning reads with deSALT...", file=sys.stderr)
                     cmd = DESALT_CMD.format(cpus=n_cpu,
