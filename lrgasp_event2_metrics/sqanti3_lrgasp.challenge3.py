@@ -555,11 +555,11 @@ def correctionPlusORFpred(args, genome_dict):
                     sys.exit(-1)
                 corrBAM = get_corrBam_from_corrSam(corrSAM)
 
-            print('test for err_correct', file=sys.sterr)
+            print('test for err_correct', file=sys.stderr)
             # error correct the genome (input: corrSAM, output: corrFASTA)
             err_correct(args.genome, corrSAM, corrFASTA, genome_dict=genome_dict)
             # convert SAM to GFF --> GTF
-            print('test for SAM to GFF', file=sys.sterr)
+            print('test for SAM to GFF', file=sys.stderr)
             convert_sam_to_gff3(corrSAM, corrGTF + '.tmp',
                                 source=os.path.basename(args.genome).split('.')[0])  # convert SAM to GFF3
             cmd = "{p} {o}.tmp -T -o {o}".format(o=corrGTF, p=GFFREAD_PROG)
