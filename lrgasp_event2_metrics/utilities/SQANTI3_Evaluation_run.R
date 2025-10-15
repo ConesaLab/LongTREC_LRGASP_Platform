@@ -153,7 +153,7 @@ bam_file <- paste(report.prefix, "corrected.bam", sep="_")
 
 #********************** Packages (install if not found)
 
-list_of_packages <- c("ggplot2", "scales", "knitr","rmarkdown")
+list_of_packages <- c("ggplot2", "scales", "knitr","rmarkdown", "Rsamtools")
 req_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
 if(length(req_packages)) install.packages(req_packages, repo="http://cran.rstudio.com/")
 
