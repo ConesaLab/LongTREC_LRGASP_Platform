@@ -2668,7 +2668,7 @@ def main():
 
     args = parser.parse_args()
     args.output = 'lrgasp_platform_challenge_3'
-    args.skipORF = False
+    args.skipORF = True
     os.chdir("sqanti_results/results_file1")
 
     if args.dataset2 == False:
