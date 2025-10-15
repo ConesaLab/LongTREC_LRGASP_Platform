@@ -641,7 +641,7 @@ def correctionPlusORFpred(args, genome_dict):
             subprocess.call([GFFREAD_PROG, corrGTF, '-g', args.genome, '-w', corrFASTA])
 
     # ORF generation
-    print("**** Predicting ORF sequences...", file=sys.stdout)
+    print("**** Predicting ORF sequences...", file=sys.stderr)
     if args.dataset2 == 'NA' or current_loop == 2:
         print(f'PROGRESS: {30}', file=sys.stderr)
     else:
@@ -1624,28 +1624,28 @@ def isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_b
 
     ## read coverage files if provided
     if args.coverage is not None:
-        print("**** Reading Splice Junctions coverage files.", file=sys.stdout)
+        print("**** Reading Splice Junctions coverage files.", file=sys.stderr)
         SJcovNames, SJcovInfo = STARcov_parser(args.coverage)
         fields_junc_cur = FIELDS_JUNC + SJcovNames  # add the samples to the header
     else:
         SJcovNames, SJcovInfo = None, None
-        print("Splice Junction Coverage files not provided.", file=sys.stdout)
+        print("Splice Junction Coverage files not provided.", file=sys.stderr)
         fields_junc_cur = FIELDS_JUNC
 
     if args.cage_peak is not None:
-        print("**** Reading CAGE Peak data.", file=sys.stdout)
+        print("**** Reading CAGE Peak data.", file=sys.stderr)
         cage_peak_obj = CAGEPeak(args.cage_peak)
     else:
         cage_peak_obj = None
 
     if args.polyA_peak is not None:
-        print("**** Reading polyA Peak data.", file=sys.stdout)
+        print("**** Reading polyA Peak data.", file=sys.stderr)
         polya_peak_obj = PolyAPeak(args.polyA_peak)
     else:
         polya_peak_obj = None
 
     if args.polyA_motif_list is not None:
-        print("**** Reading PolyA motif list.", file=sys.stdout)
+        print("**** Reading PolyA motif list.", file=sys.stderr)
         polyA_motif_list = []
         for line in open(args.polyA_motif_list):
             x = line.strip().upper().replace('U', 'A')
@@ -1657,17 +1657,17 @@ def isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_b
         polyA_motif_list = None
 
     if args.phyloP_bed is not None:
-        print("**** Reading PhyloP BED file.", file=sys.stdout)
+        print("**** Reading PhyloP BED file.", file=sys.stderr)
         phyloP_reader = LazyBEDPointReader(args.phyloP_bed)
     else:
         phyloP_reader = None
 
     # running classification
-    print("**** Performing Classification of Isoforms....", file=sys.stdout)
+    print("**** Performing Classification of Isoforms....", file=sys.stderr)
     if args.dataset2 == 'NA' or current_loop == 2:
-        print(f'PROGRESS: {50}', file=sys.stdout)
+        print(f'PROGRESS: {50}', file=sys.stderr)
     else:
-        print(f'PROGRESS: {25}', file=sys.stdout)
+        print(f'PROGRESS: {25}', file=sys.stderr)
 
     accepted_canonical_sites = list(args.sites.split(","))
 
@@ -2668,7 +2668,7 @@ def main():
 
     args = parser.parse_args()
     args.output = 'lrgasp_platform_challenge_3'
-    args.skipORF = False
+    args.skipORF = True
     os.chdir("sqanti_results/results_file1")
 
     if args.dataset2 == False:
