@@ -111,11 +111,11 @@ def run_script_challenge1():
         os.makedirs(directory_path)
 
     replace_directory("uploads")
-    #replace_directory("uploads/transcriptome_file1")
+    replace_directory("uploads/transcriptome_file1")
     replace_directory("uploads/transcriptome_file2")
     #replace_directory("sqanti_results/results_file1")
     replace_directory("sqanti_results/results_file2")
-    #replace_directory("uploads/coverage_files")
+    replace_directory("uploads/coverage_files")
     replace_directory("uploads/coverage_files2")
 
     organism = request.form.get('organism')
