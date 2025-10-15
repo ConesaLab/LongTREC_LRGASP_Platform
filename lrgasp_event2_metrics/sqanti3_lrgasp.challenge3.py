@@ -2266,17 +2266,17 @@ def run(args):
             rerun = True
 
         if args.sirv_list != 'NA':
-            args.sirv_list = os.path.join('/home/wouter/', args.sirv_list)
+            args.sirv_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sirv_list)
         if args.ercc_list != 'NA':
-            args.ercc_list = os.path.join('/home/wouter/', args.ercc_list)
+            args.ercc_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ercc_list)
         if args.sequin_list != 'NA':
-            args.sequin_list = os.path.join('/home/wouter/', args.sequin_list)
+            args.sequin_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sequin_list)
         if args.sirv_list2 != 'NA':
-            args.sirv_list2 = os.path.join('/home/wouter/', args.sirv_list2)
+            args.sirv_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sirv_list2)
         if args.ercc_list2 != 'NA':
-            args.ercc_list2 = os.path.join('/home/wouter/', args.ercc_list2)
+            args.ercc_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ercc_list2)
         if args.sequin_list2 != 'NA':
-            args.sequin_list2 = os.path.join('/home/wouter/', args.sequin_list2)
+            args.sequin_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sequin_list2)
 
         cmd = RSCRIPTPATH + " {d}/{f} {c} {j} {d} {o} {b} {s} {t}your_tool {pl} {l} {da} {comp} {bambu} {RNABloom} {rnaSPAdes} {StringTie2IsoQuant} {sirv_list} {ercc_list} {sequin_list} {c2} {j2} {b2} {pl2} {l2} {da2} {sirv_list2} {ercc_list2} {sequin_list2} {dataset2}".format(
             d=utilitiesPath,
