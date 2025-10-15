@@ -1953,13 +1953,15 @@ def run(args):
             print('INPUT args.genome2:', args.ref_2)
             if args.ref_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
                 elif args.organism == 'manatee':
-                    args.ref_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+                elif args.organism == 'human':
+                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grch38_sirvs.fasta"
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
             else:
-                args.ref_2 = os.path.abspath(os.path.join('../../', args.ref_2))
+                args.ref_2 = os.path.abspath(os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ref_2))
             if not os.path.isfile(args.ref_2):
                 print("ERROR: genome fasta {0} doesn't exist. Abort!".format(args.ref_2), file=sys.stderr)
                 sys.exit()
@@ -1968,18 +1970,20 @@ def run(args):
             print('INPUT args.annotation2:', args.anno_2)
             if args.anno_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.anno_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
+                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
                 elif args.organism == 'manatee':
-                    args.anno_2 = "../../LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
+                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
+                elif args.organism == 'human':
+                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_v39_annotation_sirvs.human.gtf"
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
                 if not os.path.isfile(args.anno_2):
                     print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.anno_2), file=sys.stderr)
                     sys.exit()
             elif args.anno_2 == 'NA':
-                args.anno_2 = "../../LONGTrec_LRGASP_Platform/empty_anno.gtf"
+                args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
             else:
-                args.anno_2 = os.path.abspath(os.path.join("../../", args.anno_2))
+                args.anno_2 = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.anno_2))
                 print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.anno_2), file=sys.stderr)
                 sys.exit()
             print('USED args.annotation2:', args.anno_2)
@@ -1987,16 +1991,16 @@ def run(args):
             print('INPUT args.coverage2:', args.cov_2)
             if args.cov_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.cov_2 = "../../LONGTrec_LRGASP_Platform/gold_std_ES"
+                    args.cov_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
                 elif args.organism == 'manatee':
-                    args.cov_2 = "../../LONGTrec_LRGASP_Platform/gold_std_manatee"
+                    args.cov_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
                 else:
                     print('ERROR: Coverage Directory cannot be set to "LRGASP Data" when Organism is set to "Custom"')
                     sys.exit()
             elif args.cov_2 == 'NA':
                 args.cov_2 = None
             else:
-                args.cov_2 = os.path.abspath(os.path.join("../../uploads/coverage_files", args.cov_dir_2))
+                args.cov_2 = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/uploads/coverage_files", args.cov_dir_2))
             print('USED args.coverage:', args.cov_2)
 
             args.isoforms = args.isoforms2
@@ -2797,12 +2801,12 @@ def main():
     elif args.coverage == 'NA':
         args.coverage = None
     else:
-        args.coverage = os.path.abspath(os.path.join("../../uploads/coverage_files", args.coverage_dir))
+        args.coverage = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/uploads/coverage_files", args.coverage_dir))
     print('USED args.coverage:', args.coverage, file=sys.stderr)
 
     if args.dataset2 != 'NA':
         print('INPUT args.isoforms2:', args.isoforms2, file=sys.stderr)
-        args.isoforms2 = os.path.join("../../", args.isoforms2)
+        args.isoforms2 = os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.isoforms2)
         if not os.path.isfile(args.isoforms2):
             print("ERROR: Input isoforms2 {0} doesn't exist. Abort!".format(args.isoforms2), file=sys.stderr)
             sys.exit()
