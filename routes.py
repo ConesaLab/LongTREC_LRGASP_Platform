@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 logger.info("This is an info message")
 logger.error("This is an error message")
 
-print("Hello world", flush=True)
+print("Hello worldddd", flush=True)
 print("Hello world", flush=True)
 
 progress = 0
