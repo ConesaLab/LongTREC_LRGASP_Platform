@@ -704,7 +704,7 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
                        file_path_2, platform2, library_preparation2, data_category2, annotation_path_2, reference_path_2, coverage2, coverage_dir2,
                        comparison, comp_bambu, comp_RNA_Bloom, comp_rnaSPAdes, comp_StringTie2_IsoQuant,
                        sirv_list, ercc_list, sequin_list, sirv_list2, ercc_list2, sequin_list2, dataset2):
-
+    print("Hello world when starting challenge 3", flush=True)
     global progress, status_message, terminal_output
 
     terminal_output = []
@@ -712,10 +712,15 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
     # Define the path to the script
     script_path = "lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py"
 
-    logger.info("This is an info message when starting challenge 3")
-    logger.error("This is an error message when starting challenge 3")
+    thread_logger = logging.getLogger('challenge3_thread')
+    thread_logger.setLevel(logging.INFO)
+    if not thread_logger.handlers:
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s')
+        handler.setFormatter(formatter)
+        thread_logger.addHandler(handler)
 
-    print("Hello world when starting challenge 3", flush=True)
+    thread_logger.info("Thread started!")
 
     # Run the script
     try:
