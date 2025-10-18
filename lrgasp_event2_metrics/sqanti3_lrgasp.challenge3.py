@@ -22,6 +22,13 @@ from collections import defaultdict, namedtuple, UserDict
 from collections.abc import Iterable
 from csv import DictWriter, DictReader
 from multiprocessing import Process
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+logger.info("This is an info message sqanti")
+logger.error("This is an error message sqanti")
 
 print("Hello world sqanti", flush=True)
 print("Hello world sqanti", flush=True)
