@@ -23,6 +23,9 @@ from collections.abc import Iterable
 from csv import DictWriter, DictReader
 from multiprocessing import Process
 
+print("Hello world sqanti", flush=True)
+print("Hello world sqanti", flush=True)
+
 
 status = 'Importing Modules...'
 print(f'STATUS: {status}')
