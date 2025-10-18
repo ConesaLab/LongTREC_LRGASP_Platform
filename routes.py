@@ -717,7 +717,7 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
         if dataset2 == False:
             print('########### 1 DATASET ############')
             process = subprocess.Popen(
-                ['python', script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
+                ['python', '-u',script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
                                 file_path_2, platform2, library_preparation2, data_category2, annotation_path_2, reference_path_2, coverage2, coverage_dir2,
                                 comparison, comp_bambu, comp_RNA_Bloom, comp_rnaSPAdes, comp_StringTie2_IsoQuant,
                                 sirv_list, ercc_list, sequin_list, sirv_list2, ercc_list2, sequin_list2],
@@ -728,7 +728,7 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
         elif dataset2 == True:
             print('########### 2 DATASETS ############')
             process = subprocess.Popen(
-                ['python', script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
+                ['python',script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
                                 file_path_2, platform2, library_preparation2, data_category2, annotation_path_2, reference_path_2, coverage2, coverage_dir2,
                                 comparison, comp_bambu, comp_RNA_Bloom, comp_rnaSPAdes, comp_StringTie2_IsoQuant,
                                 sirv_list, ercc_list, sequin_list, sirv_list2, ercc_list2, sequin_list2, '--dataset2'],
