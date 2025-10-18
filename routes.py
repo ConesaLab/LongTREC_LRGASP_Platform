@@ -712,6 +712,11 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
     # Define the path to the script
     script_path = "lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py"
 
+    logger.info("This is an info message when starting challenge 3")
+    logger.error("This is an error message when starting challenge 3")
+
+    print("Hello world when starting challenge 3", flush=True)
+
     # Run the script
     try:
         if dataset2 == False:
