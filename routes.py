@@ -820,7 +820,7 @@ def download_report():
 
 @app.route("/test")
 def test_route():
-    print("Route hit!", flush=True)
+    print("Route hit!(test", flush=True)
     logger.info("Route hit!")
     return "Check your logs!"
 
