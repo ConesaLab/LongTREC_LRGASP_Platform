@@ -492,6 +492,8 @@ def challenge3():
 def run_script_challenge3():
     global progress, status_message
 
+    print("Hello world when starting challenge 3 (first)", flush=True)
+
     # Reset progress and status message
     progress = 0
     status_message = "Starting Script..."
