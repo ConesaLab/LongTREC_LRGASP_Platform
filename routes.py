@@ -816,6 +816,13 @@ def challenge3_results():
 def download_report():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'report.html', as_attachment=True)
 
+@app.route("/test")
+def test_route():
+    print("Route hit!", flush=True)
+    logger.info("Route hit!")
+    return "Check your logs!"
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
