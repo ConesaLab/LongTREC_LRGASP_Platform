@@ -23,7 +23,7 @@ logging.basicConfig(
 @app.route("/test")
 def test_route():
     logging.info("Test route accessed!")
-    return "Check your logs!"
+    return "Check your logsss test!"
 
 progress = 0
 status_message = "Booting Script..."
