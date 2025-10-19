@@ -12,14 +12,18 @@ from threading import Thread
 import json
 import logging
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+log_file = os.path.join(os.path.dirname(__file__), "myapp.log")
+print("log_file:", log_file)
+logging.basicConfig(
+    filename=log_file,
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s"
+)
 
-logger.info("This is an info message")
-logger.error("This is an error message")
-
-print("Hello worlddddd", flush=True)
-print("Hello world", flush=True)
+@app.route("/test")
+def test_route():
+    logging.info("Test route accessed!")
+    return "Check your logs!"
 
 progress = 0
 status_message = "Booting Script..."
@@ -486,6 +490,8 @@ def run_script_process_challenge1(organism, transcriptome_path, annotation_path,
 
 @app.route("/challenge3", methods=['GET', 'POST'])
 def challenge3():
+    print("Challenge 3", flush=True)
+    logger.info("Challenge 3 log")
     return render_template("challenge_3_new.html")
 
 @app.route("/run_script_challenge3", methods=["POST"])
@@ -817,13 +823,6 @@ def challenge3_results():
 @app.route('/download-report')
 def download_report():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'report.html', as_attachment=True)
-
-@app.route("/test")
-def test_route():
-    print("Route hit!(test", flush=True)
-    logger.info("Route hit!")
-    return "Check your logs!"
-
 
 
 if __name__ == '__main__':
