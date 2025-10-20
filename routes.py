@@ -485,9 +485,11 @@ def challenge3():
 
 @app.route("/run_script_challenge3", methods=["POST"])
 def run_script_challenge3():
+    print("Hello world when starting challenge 3 (first)", flush=True)
+
     global progress, status_message
 
-    print("Hello world when starting challenge 3 (first)", flush=True)
+
 
     # Reset progress and status message
     progress = 0
