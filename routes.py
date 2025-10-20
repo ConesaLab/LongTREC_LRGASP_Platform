@@ -103,7 +103,7 @@ def challenge1():
 
 @app.route("/run_script_challenge1", methods=['POST'])
 def run_script_challenge1():
-    print('dikke bictor')
+    print('run challenge 1')
     progress = 0
     status_message = "Starting Challenge 1..."
     terminal_output = []
@@ -480,7 +480,6 @@ def run_script_process_challenge1(organism, transcriptome_path, annotation_path,
 
 @app.route("/challenge3", methods=['GET', 'POST'])
 def challenge3():
-    print("Challenge 3 test", flush=True)
     return render_template("challenge_3_new.html")
 
 @app.route("/run_script_challenge3", methods=["POST"])
@@ -488,8 +487,6 @@ def run_script_challenge3():
     print("Hello world when starting challenge 3 (first)", flush=True)
 
     global progress, status_message
-
-
 
     # Reset progress and status message
     progress = 0
