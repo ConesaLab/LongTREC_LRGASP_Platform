@@ -10,19 +10,9 @@ import subprocess
 import glob
 from threading import Thread
 import json
-import logging
-
-log_file = os.path.join(os.path.dirname(__file__), "myapp.log")
-print("log_file:", log_file)
-logging.basicConfig(
-    filename=log_file,
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s"
-)
 
 @app.route("/test")
 def test_route():
-    logging.info("Test route accessed!")
     return "Check your logsss test!"
 
 progress = 0
@@ -491,7 +481,6 @@ def run_script_process_challenge1(organism, transcriptome_path, annotation_path,
 @app.route("/challenge3", methods=['GET', 'POST'])
 def challenge3():
     print("Challenge 3", flush=True)
-    logger.info("Challenge 3 log")
     return render_template("challenge_3_new.html")
 
 @app.route("/run_script_challenge3", methods=["POST"])
@@ -720,22 +709,12 @@ def run_script_process_challenge3(file_path, organism, platform, library_prepara
     # Define the path to the script
     script_path = "lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py"
 
-    thread_logger = logging.getLogger('challenge3_thread')
-    thread_logger.setLevel(logging.INFO)
-    if not thread_logger.handlers:
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('[%(asctime)s] [%(levelname)s] %(message)s')
-        handler.setFormatter(formatter)
-        thread_logger.addHandler(handler)
-
-    thread_logger.info("Thread started!")
-
     # Run the script
     try:
         if dataset2 == False:
             print('########### 1 DATASET ############')
             process = subprocess.Popen(
-                ['python', '-u',script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
+                ['python',script_path, file_path, organism, platform, library_preparation, tool, data_category, annotation_path, reference_path, coverage, coverage_dir,
                                 file_path_2, platform2, library_preparation2, data_category2, annotation_path_2, reference_path_2, coverage2, coverage_dir2,
                                 comparison, comp_bambu, comp_RNA_Bloom, comp_rnaSPAdes, comp_StringTie2_IsoQuant,
                                 sirv_list, ercc_list, sequin_list, sirv_list2, ercc_list2, sequin_list2],
