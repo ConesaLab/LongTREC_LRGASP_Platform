@@ -132,11 +132,9 @@ def run_script_challenge1():
     transcriptome_file2 = request.files.get('file-2')
     print('tr_file2:', transcriptome_file2.filename)
     if transcriptome_file2.filename != '':
-        print('gekke shit')
         transcriptome_path2 = os.path.join(app.config['UPLOAD_FOLDER'], 'transcriptome_file2', transcriptome_file2.filename)
         transcriptome_file2.save(transcriptome_path2)
     else:
-        print('tr_file is NA')
         transcriptome_path2 = 'NA'
 
     annotation_file = request.form.get('annotation')
@@ -407,13 +405,6 @@ def run_script_challenge1():
 def run_script_process_challenge1(organism, transcriptome_path, annotation_path, reference_path, coverage, coverage_dir, cage_path, quant_path, poly_A_path, platform, library_preparation, tool, data_category,
                     sirv_list, ercc_list, sequin_list, comparison, comp_bambu, comp_FLAIR, comp_Lyric, comp_IsoTools, comp_Mandalorion, comp_Iso_IB, comp_FLAMES, comp_IsoQuant, comp_Spectra, comp_TALON_LAPA, comp_StringTie2, transcriptome_path2, annotation_path2, reference_path2, coverage2, coverage_dir2,
                                   cage_path2, quant_path2, poly_A_path2, platform2, library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2):
-
-    print(organism, transcriptome_path, annotation_path, reference_path, coverage, coverage_dir,cage_path, quant_path,
-          poly_A_path, platform, library_preparation, tool, data_category,
-          sirv_list, ercc_list, sequin_list, comparison, comp_bambu, comp_FLAIR, comp_Lyric, comp_IsoTools, comp_Mandalorion, comp_Iso_IB, comp_FLAMES, comp_IsoQuant, comp_Spectra, comp_TALON_LAPA, comp_StringTie2,
-          transcriptome_path2, annotation_path2, reference_path2, coverage2,
-          coverage_dir2, cage_path2, quant_path2, poly_A_path2, platform2, library_preparation2, data_category2,
-          sirv_list2, ercc_list2, sequin_list2)
 
     global progress, status_message, terminal_output
 

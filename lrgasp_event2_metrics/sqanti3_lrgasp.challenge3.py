@@ -31,7 +31,6 @@ logger.info("This is an info message sqanti")
 logger.error("This is an error message sqanti")
 
 print("Hello world sqanti", flush=True)
-print("Hello world sqanti", flush=True)
 
 
 status = 'Importing Modules...'
@@ -548,7 +547,6 @@ def correctionPlusORFpred(args, genome_dict):
                                           o=corrSAM)
                 elif args.aligner_choice == "minimap2":
                     print("****Aligning reads with Minimap2...", file=sys.stderr)
-                    print(os.getcwd(), file=sys.stderr)
                     cmd = MINIMAP2_CMD.format(
                         cpus=n_cpu,
                         sense=args.sense,
@@ -556,34 +554,6 @@ def correctionPlusORFpred(args, genome_dict):
                         i=args.isoforms,
                         o=corrSAM
                     )
-
-                    print(f"[DEBUG] Running command:\n{cmd}\n", file=sys.stderr)
-
-                    process = subprocess.Popen(
-                        cmd,
-                        shell=True,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                        universal_newlines=True,
-                        bufsize=1
-                    )
-
-                    # Capture stderr in real-time
-                    for line in process.stderr:
-                        line = line.strip()
-                        print(line)  # or send to your web UI / progress bar
-                        # Example: check for keywords to update progress %
-                        if "loaded/built the index" in line:
-                            print("Progress: 10% (index built)")
-                        elif "mapped" in line:
-                            print("Progress: 50% (mapping reads)")
-
-                    process.wait()
-
-                    if process.returncode != 0:
-                        print(f"[ERROR] Minimap2 failed with exit code {process.returncode}")
-                    else:
-                        print("Minimap2 completed successfully.")
                 elif args.aligner_choice == "deSALT":
                     print("****Aligning reads with deSALT...", file=sys.stderr)
                     cmd = DESALT_CMD.format(cpus=n_cpu,
@@ -595,11 +565,9 @@ def correctionPlusORFpred(args, genome_dict):
                     sys.exit(-1)
                 corrBAM = get_corrBam_from_corrSam(corrSAM)
 
-            print('test for err_correct', file=sys.stderr)
             # error correct the genome (input: corrSAM, output: corrFASTA)
             err_correct(args.genome, corrSAM, corrFASTA, genome_dict=genome_dict)
             # convert SAM to GFF --> GTF
-            print('test for SAM to GFF', file=sys.stderr)
             convert_sam_to_gff3(corrSAM, corrGTF + '.tmp',
                                 source=os.path.basename(args.genome).split('.')[0])  # convert SAM to GFF3
             cmd = "{p} {o}.tmp -T -o {o}".format(o=corrGTF, p=GFFREAD_PROG)
@@ -657,13 +625,11 @@ def correctionPlusORFpred(args, genome_dict):
     else:
         print(f'PROGRESS: {15}', file=sys.stderr)
 
-    print('test1')
     gmst_dir = os.path.join(os.path.abspath(args.dir), "GMST")
     gmst_pre = os.path.join(gmst_dir, "GMST_tmp")
     if not os.path.exists(gmst_dir):
         os.makedirs(gmst_dir)
 
-    print('test2')
     # sequence ID example: PB.2.1 gene_4|GeneMark.hmm|264_aa|+|888|1682
     gmst_rex = re.compile(r'(\S+\t\S+\|GeneMark.hmm)\|(\d+)_aa\|(\S)\|(\d+)\|(\d+)')
     orfDict = {}  # GMST seq id --> myQueryProteins object
@@ -749,11 +715,9 @@ def reference_parser(args, genome_chroms):
 
     ## gtf to genePred
     if not args.genename:
-        print('test if not args.genename')
         subprocess.call([GTF2GENEPRED_PROG, args.annotation, referenceFiles, '-genePredExt', '-allErrors',
                          '-ignoreGroupsWithoutExons'])
     else:
-        print('test if args.genename')
         subprocess.call([GTF2GENEPRED_PROG, args.annotation, referenceFiles, '-genePredExt', '-allErrors',
                          '-ignoreGroupsWithoutExons', '-geneNameAsName2'])
 
@@ -2023,7 +1987,6 @@ def run(args):
             args.dir = os.getcwd()
 
         print('STARTING CYCLE ', i, '/', loop, sep='', file=sys.stderr)
-        print('args.dir:', args.dir, file=sys.stderr)
         print("**** Parsing provided files....", file=sys.stderr)
         if args.dataset2 == 'NA' or current_loop == 2:
             print(f'PROGRESS: {20}', file=sys.stderr)
@@ -2037,23 +2000,15 @@ def run(args):
         # NOTE: can't use LazyFastaReader because inefficient. Bring the whole genome in!
         genome_dict = dict((r.name, r) for r in SeqIO.parse(open(args.genome), 'fasta'))
 
-        print('test 1', file=sys.stderr)
-
         ## correction of sequences and ORF prediction (if gtf provided instead of fasta file, correction of sequences will be skipped)
         orfDict = correctionPlusORFpred(args, genome_dict)
-
-        print('test 2', file=sys.stderr)
 
         ## parse reference id (GTF) to dicts
         refs_1exon_by_chr, refs_exons_by_chr, junctions_by_chr, junctions_by_gene, start_ends_by_gene = reference_parser(
             args, list(genome_dict.keys()))
 
-        print('test 3', file=sys.stderr)
-
         ## parse query isoforms
         isoforms_by_chr = isoforms_parser(args)
-
-        print('test 4', file=sys.stderr)
 
         ## Run indel computation if sam exists
         # indelsJunc: dict of pbid --> list of junctions near indel (in Interval format)
@@ -2063,8 +2018,6 @@ def run(args):
         else:
             indelsJunc = None
             indelsTotal = None
-
-        print('test 5', file=sys.stderr)
 
         # isoform classification + intra-priming + id and junction characterization
         isoforms_info = isoformClassification(args, isoforms_by_chr, refs_1exon_by_chr, refs_exons_by_chr,
