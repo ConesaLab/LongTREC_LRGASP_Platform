@@ -265,6 +265,8 @@ if (dataset2_provided != 'NA'){
   }
 }
 
+print(paste0('organism is: ', organism))
+print(!unique(is.na(temp_env$sqanti_data$structural_category)))
 if(organism == 'mouse' | !unique(is.na(temp_env$sqanti_data$structural_category))){
   organism_like <- 'mouse'
 } else {
