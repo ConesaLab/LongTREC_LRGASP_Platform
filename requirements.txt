@@ -1,22 +1,9 @@
-# Flask app dependencies
-flask
-flask_sqlalchemy
-flask_login
-flask_wtf
-flask_bcrypt
-Werkzeug
-
-# Scientific and data dependencies
-numpy
-scipy
-pandas
-matplotlib
-seaborn
-requests
-pysam
-
-# Bioinformatics libraries
-biopython
-bx-python
-git+https://github.com/chapmanb/bcbb.git@master#subdirectory=gff
-gffutils
+Flask==3.0.0
+Flask-SQLAlchemy==3.1.1
+Flask-Login==0.6.3
+Flask-WTF==1.2.1
+Flask-Mail==0.9.1
+WTForms==3.1.1
+email-validator==2.1.0
+Werkzeug==3.0.1
+gunicorn==21.2.0

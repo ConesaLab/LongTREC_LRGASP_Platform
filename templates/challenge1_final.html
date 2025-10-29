@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge 3</title>
+    <title>Challenge 1</title>
     <style>
 
         html,body{
@@ -44,10 +44,31 @@
             margin-top: 3vh;
             margin-bottom: 3vh;
             display: flex;
-            align-items: center;  /* Vertically center items */
+            align-items: center;
             text-align: center;
-            justify-content: flex-start; /* Or flex-end or center horizontally */
-            position: relative; /* If you still want to place the button with margin-left */
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        .email-input-container{
+            margin-left: 2vw;
+            display: flex;
+            align-items: center;
+        }
+
+        .email-input-container label{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1vw;
+            margin-right: 1vw;
+        }
+
+        .email-input-container input{
+            width: 12vw;
+            height: 4vh;
+            border: 0.1vw solid black;
+            border-radius: 0.25vw;
+            padding: 0.5vw;
+            font-size: 0.9vw;
         }
 
         .run_script_button{
@@ -58,7 +79,7 @@
             cursor: pointer;
             width: 5vw;
             height: 5vh;
-            margin-left: 30vw;
+            margin-left: 5vw;
             font-size: 0.8vw;
         }
 
@@ -74,11 +95,10 @@
 
         }
 
-        /* The buttons keep consistent styling */
-            .add-dataset, .remove-dataset {
+        .add-dataset, .remove-dataset {
             font-size: 0.8vw;
-            display: inline-block;  /* or block */
-            background-color: #ec8551; /* or override for remove button */
+            display: inline-block;
+            background-color: #ec8551;
             border: black 0.05vw solid;
             color: white;
             border-radius: 0.25vw;
@@ -145,11 +165,11 @@
         }
 
         .toggle-switch input:checked + .slider {
-            background-color: #4CAF50; /* Green color when checked */
+            background-color: #4CAF50;
         }
 
         .toggle-switch input:checked + .slider:before {
-            transform: translateX(1.6vw); /* Move circle to the right */
+            transform: translateX(1.6vw);
         }
 
         .box_dataset1,
@@ -378,7 +398,6 @@
             box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.2);
         }
 
-        /* Show tooltip when hovering */
         .tooltip-container:hover .tooltip-text {
             background-color: #da7949 !important;
             display: block;
@@ -393,8 +412,6 @@
             height: 2.5vh;
             max-width: 8vw;
         }
-
-
 
         #library-custom-input,
         #library-custom-input2{
@@ -481,19 +498,18 @@
             border: 0.05vw solid black;
             border-radius: 0.25vw;
             width: 13vw;
-            height: auto; /* Adjust height for multiple selections */
+            height: auto;
             text-align: left;
         }
 
-        /* Style for the Choices.js dropdown */
         .choices {
             width: 13vw;
             color: black;
         }
 
         .choices__list--multiple .choices__item {
-            background-color: #ec8551 !important; /* Replace with your desired color */
-            color: white; /* Change text color for contrast */
+            background-color: #ec8551 !important;
+            color: white;
         }
 
         .vertical-line{
@@ -503,54 +519,6 @@
             height: 69vh;
             margin-left: 23vw;
         }
-
-        /* Overlay and Progress */
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        #progress-container {
-            background: white;
-            color: black;
-            padding: 1vw;
-            border-radius: 0.4vw;
-            text-align: center;
-            width: 40vw;
-        }
-
-        #progress-bar-container {
-            width: 80%;
-            background-color: #ddd;
-            border-radius: 0.2vw;
-            overflow: hidden;
-        }
-
-        #progress-bar {
-            width: 0;
-            height: 2vh;
-            background: #4CAF50;
-        }
-
-        #terminal-log-container{
-            width:80%;
-            height:15vw;
-            background-color:black;
-            color: limegreen;
-            border: black 0.05vw solid;
-            overflow-y:scroll;
-            padding:0.5vw;
-            border-radius: 1.5vw;
-            text-align: left;
-        }
-
 
     </style>
 
@@ -566,7 +534,7 @@
     <header>
         <h1>Transcriptome Reconstruction <br> with Annotation File</h1>
 
-        <form id="script-form" action="{{ url_for('run_script_challenge3') }}" method="POST" enctype="multipart/form-data">
+        <form id="script-form" action="{{ url_for('run_script_challenge1') }}" method="POST" enctype="multipart/form-data">
         <div class="challenge3-row-1">
             <div class="challenge3-modes">
                 <h2>Is your data derived from <br> a LRGASP dataset?</h2>
@@ -583,7 +551,7 @@
 
             <div class="box_dataset1">
                 <div class="input_data_1">
-                    <!-- Organsim -->
+                    <!-- Organism -->
                     <div class="organism_dataset1">
                         <label for="organism-dropdown">Organism: </label>
                         <select id="organism-dropdown" class="dropdown" name="organism" required>
@@ -662,7 +630,7 @@
                         <label for="cage-dropdown">CAGE Peak File: </label>
                         <select id="cage-dropdown" class="dropdown" name="cage" onchange="toggleFileInput('cage-dropdown', 'cage-file-upload')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -679,7 +647,7 @@
                         <label for="quant-dropdown">Quant Peak File: </label>
                         <select id="quant-dropdown" class="dropdown" name="quant" onchange="toggleFileInput('quant-dropdown', 'quant-file-upload')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -696,7 +664,7 @@
                         <label for="polyA-dropdown">PolyA Motif File: </label>
                         <select id="polyA-dropdown" class="dropdown" name="polyA" onchange="toggleFileInput('polyA-dropdown', 'polyA-file-upload')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -724,7 +692,6 @@
                             <option value="ONT">Oxford Nanopore Technologies</option>
                          <option value="custom">Custom</option>
                         </select>
-                        <!-- Hidden text input for custom platform -->
                         <input class="custom-platform-box" type="text" id="platform-custom-input" name="platform_custom" placeholder="Enter Platform..." style="display: none;">
                     </div>
 
@@ -738,7 +705,6 @@
                             <option value="CapTrap">CapTrap</option>
                             <option value="custom">Custom</option>
                         </select>
-                        <!-- Hidden text input for custom library preparation -->
                         <input class="custom-lib_prep-box" type="text" id="library-custom-input" name="library_custom" placeholder="Please type..." style="display: none;">
                     </div>
 
@@ -807,12 +773,18 @@
         </div>
 
         <div class="challenge3-row-2">
-            <div class="add-remove-dataset">
-                <button id="add-dataset-button" class="add-dataset">+ Add Dataset</button>
-                <button id="remove-dataset-button" class="remove-dataset" style="display: none;" name="remove-dataset-button">- Remove Dataset</button>
+            <!-- Added email input field -->
+            <div class="email-input-container">
+                <label for="email-input">Email:</label>
+                <input type="email" id="email-input" name="email" required placeholder="your.email@example.com">
             </div>
 
             <button class="run_script_button" type="button" onclick="start_progress(event)">Run Script</button>
+
+            <div class="add-remove-dataset">
+                <button id="add-dataset-button" class="add-dataset" type="button">+ Add Dataset</button>
+                <button id="remove-dataset-button" class="remove-dataset" type="button" style="display: none;" name="remove-dataset-button">- Remove Dataset</button>
+            </div>
         </div>
 
 
@@ -841,7 +813,7 @@
                         <span id="transcriptome-label2">Transcriptome file:</span>
                         <label for="transcriptome_dataset2" class="transcriptome-custom-file-upload2">Choose File</label>
                         <span id="transcriptome-file-display2">No file chosen</span>
-                        <input type="file" id="transcriptome_dataset2" name="file-2" onchange="displayTranscriptomeFile('2')" required style="display: none;">
+                        <input type="file" id="transcriptome_dataset2" name="file-2" onchange="displayTranscriptomeFile('2')" style="display: none;">
                     </div>
 
                     <!-- Annotation File -->
@@ -857,7 +829,7 @@
                     <div id="annotation-file-upload2" style="display: none">
                         <label for="annotation-file2" class="annotation-custom-file-upload2">Choose File</label>
                         <span id="annotation-file-display2">No file chosen</span>
-                        <input type="file" id="annotation-file2" name="annotation_file2" onchange="displayFileName('annotation-file2', 'annotation-file-display2')" required style="display: none;">
+                        <input type="file" id="annotation-file2" name="annotation_file2" onchange="displayFileName('annotation-file2', 'annotation-file-display2')" style="display: none;">
                     </div>
 
                     <!-- Reference File -->
@@ -873,7 +845,7 @@
                     <div id="reference-file-upload2" style="display: none">
                         <label for="reference-file2" class="reference-custom-file-upload2">Choose File</label>
                         <span id="reference-file-display2">No file chosen</span>
-                        <input type="file" id="reference-file2" name="reference_file2" onchange="displayFileName('reference-file2', 'reference-file-display2')" required style="display: none;">
+                        <input type="file" id="reference-file2" name="reference_file2" onchange="displayFileName('reference-file2', 'reference-file-display2')" style="display: none;">
                     </div>
 
                     <!-- Coverage Directory -->
@@ -894,7 +866,7 @@
                     <div id="coverage-file-upload2" style="display: none">
                         <label for="coverage-file2" class="coverage-custom-file-upload2">Choose Directory</label>
                         <span id="coverage-file-display2">No directory chosen</span>
-                        <input type="file" id="coverage-file2" name="coverage_dir2" webkitdirectory onchange="displayDirectoryName('coverage-file2', 'coverage-file-display2')" required style="display: none;">
+                        <input type="file" id="coverage-file2" name="coverage_dir2" webkitdirectory onchange="displayDirectoryName('coverage-file2', 'coverage-file-display2')" style="display: none;">
                     </div>
 
                     <!-- CAGE File -->
@@ -902,7 +874,7 @@
                         <label for="cage-dropdown2">CAGE Peak File: </label>
                         <select id="cage-dropdown2" class="dropdown" name="cage2" onchange="toggleFileInput('cage-dropdown2', 'cage-file-upload2')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -911,7 +883,7 @@
                     <div id="cage-file-upload2" style="display: none">
                         <label for="cage-file2" class="cage-custom-file-upload2">Choose File</label>
                         <span id="cage-file-display2">No file chosen</span>
-                        <input type="file" id="cage-file2" name="cage_file2" onchange="displayFileName('cage-file2', 'cage-file-display2')" required style="display: none;">
+                        <input type="file" id="cage-file2" name="cage_file2" onchange="displayFileName('cage-file2', 'cage-file-display2')" style="display: none;">
                     </div>
 
                     <!-- QUANT File -->
@@ -919,7 +891,7 @@
                         <label for="quant-dropdown2">Quant Peak File: </label>
                         <select id="quant-dropdown2" class="dropdown" name="quant2" onchange="toggleFileInput('quant-dropdown2', 'quant-file-upload2')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -928,7 +900,7 @@
                     <div id="quant-file-upload2" style="display: none">
                         <label for="quant-file2" class="quant-custom-file-upload2">Choose File</label>
                         <span id="quant-file-display2">No file chosen</span>
-                        <input type="file" id="quant-file2" name="quant_file2" onchange="displayFileName('quant-file2', 'quant-file-display2')" required style="display: none;">
+                        <input type="file" id="quant-file2" name="quant_file2" onchange="displayFileName('quant-file2', 'quant-file-display2')" style="display: none;">
                     </div>
 
                     <!-- PolyA File -->
@@ -936,7 +908,7 @@
                         <label for="polyA-dropdown2">PolyA Motif File: </label>
                         <select id="polyA-dropdown2" class="dropdown" name="polyA2" onchange="toggleFileInput('polyA-dropdown2', 'polyA-file-upload2')">
                             <option value="reference" selected>Reference</option>
-                            <option value="default" selected>LRGASP Data</option>
+                            <option value="default">LRGASP Data</option>
                             <option value="custom">Custom</option>
                         </select>
                     </div>
@@ -945,7 +917,7 @@
                     <div id="polyA-file-upload2" style="display: none">
                         <label for="polyA-file2" class="polyA-custom-file-upload2">Choose File</label>
                         <span id="polyA-file-display2">No file chosen</span>
-                        <input type="file" id="polyA-file2" name="polyA_file2" onchange="displayFileName('polyA-file2', 'polyA-file-display2')" required style="display: none;">
+                        <input type="file" id="polyA-file2" name="polyA_file2" onchange="displayFileName('polyA-file2', 'polyA-file-display2')" style="display: none;">
                     </div>
                 </div>
 
@@ -953,33 +925,31 @@
                     <!-- Platform Dropdown -->
                     <div class="dropdown-container platform-dropdown-container">
                         <label for="platform-dropdown2">Platform: </label>
-                        <select id="platform-dropdown2" class="dropdown" name="platform2" required>
+                        <select id="platform-dropdown2" class="dropdown" name="platform2">
                             <option value="PacBio" selected>PacBio</option>
                             <option value="ONT">Oxford Nanopore Technologies</option>
                          <option value="custom">Custom</option>
                         </select>
-                        <!-- Hidden text input for custom platform -->
                         <input class="custom-platform-box" type="text" id="platform-custom-input2" name="platform_custom2" placeholder="Enter Platform..." style="display: none;">
                     </div>
 
                     <!-- Library Preparation Dropdown -->
                     <div class="dropdown-container library-dropdown-container">
                         <label for="library-dropdown2">Library Preparation: </label>
-                        <select id="library-dropdown2" class="dropdown" name="library_preparation2" required>
+                        <select id="library-dropdown2" class="dropdown" name="library_preparation2">
                             <option value="cDNA" selected>cDNA</option>
                             <option value="dRNA">directRNA</option>
                             <option value="R2C2">R2C2</option>
                             <option value="CapTrap">CapTrap</option>
                             <option value="custom">Custom</option>
                         </select>
-                        <!-- Hidden text input for custom library preparation -->
                         <input class="custom-lib_prep-box" type="text" id="library-custom-input2" name="library_custom2" placeholder="Please type..." style="display: none;">
                     </div>
 
                     <!-- Data Category Dropdown -->
                     <div class="dropdown-container data-category-container">
                         <label for="data-category-dropdown2">Data Category: </label>
-                        <select id="data-category-dropdown2" class="dropdown" name="data_category2" required>
+                        <select id="data-category-dropdown2" class="dropdown" name="data_category2">
                             <option value="NA" selected>NA</option>
                             <option value="LS">LS</option>
                             <option value="SO">SO</option>
@@ -1043,23 +1013,10 @@
         <div class="vertical-line"></div>
         </form>
 
-                  <!-- Overlay (Hidden by Default) -->
-  <div id="overlay">
-      <div id="progress-container">
-          <h2 id="status-message">Booting Script...</h2>
-          <div id="progress-bar-container">
-              <div id="progress-bar"></div>
-          </div>
-          <div id="terminal-log-container">
-            <p>Terminal logs will appear here...</p>
-          </div>
-      </div>
-  </div>
-
     </header>
 
 <script>
-    // Generic function to toggle visibility of custom input fields
+// Generic function to toggle visibility of custom input fields
 function toggleCustomInput(dropdownId, inputId) {
     document.getElementById(dropdownId).addEventListener("change", function() {
         var customInput = document.getElementById(inputId);
@@ -1079,9 +1036,9 @@ function displayTranscriptomeFile(dataset) {
     var fileNameDisplay = document.getElementById(`transcriptome-file-display${dataset}`);
 
     if (input.files.length > 0) {
-        fileNameDisplay.textContent = input.files[0].name; // Show selected file name
+        fileNameDisplay.textContent = input.files[0].name;
     } else {
-        fileNameDisplay.textContent = "No file chosen"; // Reset text if no file
+        fileNameDisplay.textContent = "No file chosen";
     }
 }
 
@@ -1118,8 +1075,6 @@ function displayDirectoryName(inputId, displayId) {
 
 
 function toggleFileInputSIRVs(type, dataset) {
-    // type might be "sirv"
-    // dataset is either null or '2'
     const container = document.getElementById(`${type}-file-container${dataset}`);
     const checkbox  = document.getElementById(`${type}-checkbox${dataset}`);
 
@@ -1133,7 +1088,6 @@ function toggleFileInputSIRVs(type, dataset) {
     } else {
         container.style.display = 'none';
 
-        // Clear the file selection when unchecking
         const fileUpload = document.getElementById(`${type}-file-upload${dataset}`);
         const fileName   = document.getElementById(`${type}-file-name${dataset}`);
         if (fileUpload && fileName) {
@@ -1145,7 +1099,6 @@ function toggleFileInputSIRVs(type, dataset) {
 
 // Display the file name after file selection
 function displayFileNameSIRVs(type, dataset) {
-    // e.g. type = "sirv-2" => looks for "sirv-2-file-upload", "sirv-2-file-name"
     const fileInput       = document.getElementById(`${type}-file-upload${dataset}`);
     const fileNameDisplay = document.getElementById(`${type}-file-name${dataset}`);
 
@@ -1163,7 +1116,7 @@ function displayFileNameSIRVs(type, dataset) {
     }
 }
 
-    // Initialize Choices.js with the option to remove selected items
+// Initialize Choices.js with the option to remove selected items
 document.addEventListener('DOMContentLoaded', function () {
     const comparisonDropdown = new Choices('#comparison-dropdown', {
         removeItems: true,
@@ -1181,47 +1134,46 @@ document.addEventListener("DOMContentLoaded", function() {
     const boxDataset2  = document.querySelector(".box_dataset2");
     const vert_line    = document.querySelector(".vertical-line")
 
-    // Show the second dataset box on "Add Dataset"
     addButton.addEventListener("click", function() {
         boxDataset2.style.display = "flex";
-        removeButton.style.display = "inline-block";  // Show the remove button
+        removeButton.style.display = "inline-block";
         addButton.style.display = "none";
         vert_line.style.height = "91vh";
     });
 
-    // Hide the second dataset box on "Remove Dataset"
     removeButton.addEventListener("click", function() {
         boxDataset2.style.display = "none";
-        removeButton.style.display = "none";   // Hide the remove button
+        removeButton.style.display = "none";
         addButton.style.display = 'inline-block';
         vert_line.style.height = "69vh";
     });
 });
 
 function start_progress(event) {
+    event.preventDefault();
 
+    const emailInput = document.getElementById('email-input');
+    if (!emailInput || !emailInput.value) {
+        alert('Please enter your email address');
+        return;
+    }
 
-    event.preventDefault();  // Prevent default form submission
-
-    document.getElementById('overlay').style.display = 'flex';
-
-    // Collect form data
     var formData = new FormData(document.getElementById('script-form'));
+    formData.append('email', emailInput.value);
 
-    // Determine which organism value to use
+    // Collect all form data
     const selectedOrganism = document.getElementById('organism-dropdown').value;
     const customOrganism = document.getElementById('organism-custom-input').value;
     if (selectedOrganism === 'custom') {
       formData.set('organism', customOrganism);
     } else {
-      // Use the selected organism from dropdown
       formData.set('organism', selectedOrganism);
     }
 
     const transcriptomeFile = document.getElementById('transcriptome_dataset1');
     if (transcriptomeFile.files.length > 0) {
         formData.append('file', transcriptomeFile.files[0]);
-      }
+    }
 
     const selectedPlatform = document.getElementById('platform-dropdown').value;
     const customPlatform = document.getElementById('platform-custom-input').value;
@@ -1246,18 +1198,15 @@ function start_progress(event) {
     const selectedDataCategory = document.getElementById('data-category-dropdown').value;
     formData.append('data_category', selectedDataCategory);
 
-    // Check if second dataset elements exist (if user clicked + Add Dataset)
     const fileUpload2 = document.getElementById('transcriptome_dataset2');
     const dataset2 = document.getElementById('remove-dataset-button').style.display;
 
     formData.append('dataset2', dataset2);
     if (dataset2 === 'inline-block') {
-      // If a second file was chosen, append it
       if (fileUpload2.files.length > 0) {
         formData.append('file_2', fileUpload2.files[0]);
       }
 
-      // Handle second platform custom field
       const platformDropdown2 = document.getElementById('platform-dropdown2');
       const platformCustomInput2 = document.getElementById('platform-custom-input2');
       if (platformDropdown2.value === 'custom') {
@@ -1266,7 +1215,6 @@ function start_progress(event) {
         formData.set('platform_2', platformDropdown2.value);
       }
 
-      // Handle second library custom field
       const libraryDropdown2 = document.getElementById('library-dropdown2');
       const libraryCustomInput2 = document.getElementById('library-custom-input2');
       if (libraryDropdown2.value === 'custom') {
@@ -1281,19 +1229,16 @@ function start_progress(event) {
         formData.append('data_category_2', selectedDataCategory2);
       }
 
-      // If a second annotation file was chosen, append it
-      const annotationInput2 = document.getElementById('annotation-upload2');
+      const annotationInput2 = document.getElementById('annotation-file2');
       if (annotationInput2 && annotationInput2.files.length > 0) {
         formData.append('annotation_file_2', annotationInput2.files[0]);
       }
-      // And also store the dropdown selection
       const annotationDropdown2 = document.getElementById('annotation-dropdown2');
       if (annotationDropdown2) {
         formData.append('annotation_2', annotationDropdown2.value);
       }
 
-      // If a second reference file was chosen, append it
-      const referenceInput2 = document.getElementById('reference-upload2');
+      const referenceInput2 = document.getElementById('reference-file2');
       if (referenceInput2 && referenceInput2.files.length > 0) {
         formData.append('reference_file_2', referenceInput2.files[0]);
       }
@@ -1301,46 +1246,30 @@ function start_progress(event) {
       if (referenceDropdown2) {
         formData.append('reference_2', referenceDropdown2.value);
       }
-
     }
 
-    // Start the server-side process (Ajax + SSE)
-    $.ajax({
+    if (confirm('Your analysis will be processed in the background. You will receive an email when it completes. Continue?')) {
+        event.target.disabled = true;
+        event.target.textContent = 'Submitting...';
 
-        url: "/run_script_challenge1",
-        type: "POST",
-        data: formData,
-        processData: false,  // Prevent jQuery from converting the data
-        contentType: false,  // Prevent jQuery from overriding the content type
-        success: function(response) {
-            console.log(response);
-
-            // Start receiving progress updates via SSE
-            const source = new EventSource("/progress_stream");
-            source.onmessage = function (event) {
-                const data = JSON.parse(event.data);
-                const progress = data.progress;
-                const message = data.message;
-
-                // Update the progress bar
-                document.getElementById("progress-bar").style.width = progress + "%";
-
-                // Update the status message
-                document.getElementById("status-message").textContent = message;
-
-                if (progress >= 100) {
-                    // Close the SSE connection
-                    source.close();
-                    // Redirect to the results page
-                    window.location.href = "/challenge_results";
-                }
-            };
-
-            source.onerror = function (event) {
-                source.close();
-            };
-        }
-    });
+        $.ajax({
+            url: "/run_script_challenge1",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                alert(response.message);
+                window.location.href = "/";
+            },
+            error: function(xhr) {
+                const error = xhr.responseJSON?.error || 'An error occurred';
+                alert('Error: ' + error);
+                event.target.disabled = false;
+                event.target.textContent = 'Run Script';
+            }
+        });
+    }
 }
 
 const lrgaspToggle = document.getElementById("toggleSwitchLRGASP");
@@ -1357,7 +1286,6 @@ function updateDropdowns() {
   const toggleIsOn = lrgaspToggle.checked;
   const organism = organismDropdown.value;
 
-  // Existing logic for the first dataset
   if (organism === "custom") {
     lrgaspToggle.checked = false;
     annotationDropdown.value = "custom";
@@ -1385,7 +1313,6 @@ function updateDropdowns() {
     }
   }
 
-    // New logic for the second dataset dropdowns
     const annotationDropdown2 = document.getElementById("annotation-dropdown2");
     const referenceDropdown2 = document.getElementById("reference-dropdown2");
     const coverageDropdown2  = document.getElementById("coverage-dropdown2");
@@ -1393,7 +1320,6 @@ function updateDropdowns() {
     const quantDropdown2 = document.getElementById("quant-dropdown2");
     const polyADropdown2 = document.getElementById("polyA-dropdown2");
 
-  // Existing logic for the first dataset
   if (organism === "custom") {
     lrgaspToggle.checked = false;
     annotationDropdown2.value = "custom";
@@ -1420,7 +1346,6 @@ function updateDropdowns() {
     }
   }
 
-  // Re-check the visibility of upload rows based on the updated dropdown values:
   toggleFileInput('annotation-dropdown', 'annotation-file-upload')
   toggleFileInput('reference-dropdown', 'reference-file-upload')
   toggleFileInput('coverage-dropdown', 'coverage-file-upload')
@@ -1435,32 +1360,13 @@ function updateDropdowns() {
   toggleFileInput('polyA-dropdown2', 'polyA-file-upload2')
 }
 
-// Whenever user changes the LRGASP toggle:
 lrgaspToggle.addEventListener("change", function() {
   updateDropdowns();
 });
 
-// Whenever user changes the organism dropdown:
 organismDropdown.addEventListener("change", function() {
   updateDropdowns();
 });
-
-// Create an EventSource for terminal logs
-const terminalLogContainer = document.getElementById("terminal-log-container");
-const terminalSource = new EventSource("/terminal_stream");
-
-terminalSource.onmessage = function(event) {
-    // Append each new log line to the container
-    terminalLogContainer.innerHTML += event.data + "<br>";
-    // Auto-scroll to the bottom
-    terminalLogContainer.scrollTop = terminalLogContainer.scrollHeight;
-};
-
-terminalSource.onerror = function(event) {
-    // Optional: close connection on error
-    terminalSource.close();
-};
-
 
 </script>
 {% endblock %}

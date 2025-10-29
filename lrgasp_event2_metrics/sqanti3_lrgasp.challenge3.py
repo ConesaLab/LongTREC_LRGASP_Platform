@@ -24,6 +24,7 @@ from csv import DictWriter, DictReader
 from multiprocessing import Process
 import logging
 
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -33,9 +34,8 @@ logger.error("This is an error message sqanti")
 print("Hello world sqanti", flush=True)
 print("Hello world sqanti", flush=True)
 
-
 status = 'Importing Modules...'
-print(f'STATUS: {status}')
+print(f'STATUS: {status}',flush=True)
 
 utilitiesPath = os.path.join(os.path.dirname(os.path.realpath(__file__)), "utilities")
 sys.path.insert(0, utilitiesPath)
@@ -1963,15 +1963,15 @@ def run(args):
             print('INPUT args.genome2:', args.ref_2)
             if args.ref_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+                    args.ref_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
                 elif args.organism == 'manatee':
-                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+                    args.ref_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
                 elif args.organism == 'human':
-                    args.ref_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grch38_sirvs.fasta"
+                    args.ref_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grch38_sirvs.fasta"
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
             else:
-                args.ref_2 = os.path.abspath(os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ref_2))
+                args.ref_2 = os.path.abspath(os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.ref_2))
             if not os.path.isfile(args.ref_2):
                 print("ERROR: genome fasta {0} doesn't exist. Abort!".format(args.ref_2), file=sys.stderr)
                 sys.exit()
@@ -1980,20 +1980,20 @@ def run(args):
             print('INPUT args.annotation2:', args.anno_2)
             if args.anno_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
+                    args.anno_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
                 elif args.organism == 'manatee':
-                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
+                    args.anno_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
                 elif args.organism == 'human':
-                    args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_v39_annotation_sirvs.human.gtf"
+                    args.anno_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_v39_annotation_sirvs.human.gtf"
                 else:
                     print('ERROR: User should provide genome file when organism is set to custom...')
                 if not os.path.isfile(args.anno_2):
                     print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.anno_2), file=sys.stderr)
                     sys.exit()
             elif args.anno_2 == 'NA':
-                args.anno_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
+                args.anno_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
             else:
-                args.anno_2 = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.anno_2))
+                args.anno_2 = os.path.abspath(os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/", args.anno_2))
                 print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.anno_2), file=sys.stderr)
                 sys.exit()
             print('USED args.annotation2:', args.anno_2)
@@ -2001,16 +2001,16 @@ def run(args):
             print('INPUT args.coverage2:', args.cov_2)
             if args.cov_2 == 'LRGASP_DATA':
                 if args.organism == 'mouse':
-                    args.cov_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
+                    args.cov_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
                 elif args.organism == 'manatee':
-                    args.cov_2 = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
+                    args.cov_2 = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
                 else:
                     print('ERROR: Coverage Directory cannot be set to "LRGASP Data" when Organism is set to "Custom"')
                     sys.exit()
             elif args.cov_2 == 'NA':
                 args.cov_2 = None
             else:
-                args.cov_2 = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/uploads/coverage_files", args.cov_dir_2))
+                args.cov_2 = os.path.abspath(os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/uploads/coverage_files", args.cov_dir_2))
             print('USED args.coverage:', args.cov_2)
 
             args.isoforms = args.isoforms2
@@ -2280,17 +2280,17 @@ def run(args):
             rerun = True
 
         if args.sirv_list != 'NA':
-            args.sirv_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sirv_list)
+            args.sirv_list = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.sirv_list)
         if args.ercc_list != 'NA':
-            args.ercc_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ercc_list)
+            args.ercc_list = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.ercc_list)
         if args.sequin_list != 'NA':
-            args.sequin_list = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sequin_list)
+            args.sequin_list = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.sequin_list)
         if args.sirv_list2 != 'NA':
-            args.sirv_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sirv_list2)
+            args.sirv_list2 = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.sirv_list2)
         if args.ercc_list2 != 'NA':
-            args.ercc_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.ercc_list2)
+            args.ercc_list2 = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.ercc_list2)
         if args.sequin_list2 != 'NA':
-            args.sequin_list2 = os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.sequin_list2)
+            args.sequin_list2 = os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.sequin_list2)
 
         cmd = RSCRIPTPATH + " {d}/{f} {c} {j} {d} {o} {b} {s} {t}your_tool {pl} {l} {da} {comp} {bambu} {RNABloom} {rnaSPAdes} {StringTie2IsoQuant} {sirv_list} {ercc_list} {sequin_list} {c2} {j2} {b2} {pl2} {l2} {da2} {sirv_list2} {ercc_list2} {sequin_list2} {dataset2}".format(
             d=utilitiesPath,
@@ -2322,7 +2322,7 @@ def run(args):
             ercc_list2=args.ercc_list2,
             sequin_list2=args.sequin_list2,
             dataset2=args.dataset2)
-
+        print(cmd)
         if subprocess.check_call(cmd, shell=True) != 0:
             print("ERROR running command: {0}".format(cmd), file=sys.stderr)
             sys.exit(-1)
@@ -2358,6 +2358,55 @@ def run_isoAnnotLite(correctedGTF, outClassFile, outJuncFile, outDir, outName, g
 
 def rename_isoform_seqids(input_fasta, force_id_ignore=False):
     """
+    Rename input isoform fasta/fastq with unique IDs
+    """
+    type = 'fasta'
+    with open(input_fasta) as h:
+        if h.readline().startswith('@'): type = 'fastq'
+    
+    f = open(input_fasta[:input_fasta.rfind('.')] + '.renamed.fasta', 'w')
+    seen_ids = set()  # Para trackear IDs ya vistos
+    counter = 1  # Contador para hacer IDs únicos
+    
+    for r in SeqIO.parse(open(input_fasta), type):
+        m1 = seqid_rex1.match(r.id)
+        m2 = seqid_rex2.match(r.id)
+        m3 = seqid_fusion.match(r.id)
+        
+        if not force_id_ignore and (m1 is None and m2 is None and m3 is None):
+            print(
+                "Invalid input IDs! Expected PB.X.Y or PB.X.Y|xxxxx or PBfusion.X format but saw {0} instead. Abort!".format(
+                    r.id), file=sys.stderr)
+            sys.exit(-1)
+        
+        if r.id.startswith('PB.') or r.id.startswith('PBfusion.'):
+            newid = r.id.split('|')[0]
+        else:
+            raw = r.id.split('|')
+            if len(raw) > 4:  # RefSeq fasta header
+                newid = raw[3]
+            else:
+                # Para GENCODE/Ensembl, usar el ID completo antes del primer espacio
+                newid = r.id.split()[0]
+        
+        # Remover versiones (.1, .2, etc) si existen
+        newid = newid.split('.')[0] if '.' in newid else newid
+        
+        # Si el ID ya existe, añadir sufijo único
+        original_newid = newid
+        while newid in seen_ids:
+            newid = f"{original_newid}_{counter}"
+            counter += 1
+        
+        seen_ids.add(newid)
+        f.write(">{0}\n{1}\n".format(newid, r.seq))
+    
+    f.close()
+    return f.name
+
+
+'''def rename_isoform_seqids(input_fasta, force_id_ignore=False):
+    """
     Rename input isoform fasta/fastq, which is usually mapped, collapsed Iso-Seq data with IDs like:
 
     PB.1.1|chr1:10-100|xxxxxx
@@ -2390,7 +2439,7 @@ def rename_isoform_seqids(input_fasta, force_id_ignore=False):
                 newid = r.id.split()[0]  # Ensembl fasta header
         f.write(">{0}\n{1}\n".format(newid, r.seq))
     f.close()
-    return f.name
+    return f.name'''
 
 
 class CAGEPeak:
@@ -2586,7 +2635,7 @@ def main():
 
     # arguments
     parser = argparse.ArgumentParser(description="Structural and Quality Annotation of Novel Transcript Isoforms")
-
+    parser.add_argument('job_id', help="\t ?")
     parser.add_argument('isoforms',
                         help='\tIsoforms (FASTA/FASTQ) or GTF format. Recommend provide GTF format with the --gtf option.')
     parser.add_argument('organism',
@@ -2683,7 +2732,7 @@ def main():
     args = parser.parse_args()
     args.output = 'lrgasp_platform_challenge_3'
     args.skipORF = True
-    os.chdir("sqanti_results/results_file1")
+    os.chdir("sqanti_results/" + args.job_id + "/results_file1")
 
     if args.dataset2 == False:
         args.dataset2 = 'NA'
@@ -2738,20 +2787,20 @@ def main():
     print('INPUT args.genome:', args.genome)
     if args.genome == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.genome = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
+            args.genome = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta"
         elif args.organism == 'manatee':
-            args.genome = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
+            args.genome = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_manatee_sirv1.fasta"
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
     else:
-        args.genome = os.path.abspath(os.path.join('/home/wouter/LongTREC_LRGASP_Platform/', args.genome))
+        args.genome = os.path.abspath(os.path.join('/home/julen/longbench/LongTREC_LRGASP_Platform/', args.genome))
     if not os.path.isfile(args.genome):
         print("ERROR: genome fasta {0} doesn't exist. Abort!".format(args.genome), file=sys.stderr)
         sys.exit()
     print('USED args.genome:', args.genome)
 
     print('INPUT args.isoforms:', args.isoforms)
-    args.isoforms = os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.isoforms)
+    args.isoforms = os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/", args.isoforms)
     if not os.path.isfile(args.isoforms):
         print("ERROR: Input isoforms {0} doesn't exist. Abort!".format(args.isoforms), file=sys.stderr)
         sys.exit()
@@ -2783,18 +2832,18 @@ def main():
     print('INPUT args.annotation:', args.annotation, file=sys.stderr)
     if args.annotation == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
+            args.annotation = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf"
         elif args.organism == 'manatee':
-            args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
+            args.annotation = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_sirvs4.gtf"
         else:
             print('ERROR: User should provide genome file when organism is set to custom...')
         if not os.path.isfile(args.annotation):
             print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.annotation), file=sys.stderr)
             sys.exit()
     elif args.annotation == 'NA':
-        args.annotation = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
+        args.annotation = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/empty_anno.gtf"
     else:
-        args.annotation = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.annotation))
+        args.annotation = os.path.abspath(os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/", args.annotation))
         print("ERROR: Annotation {0} doesn't exist. Abort!".format(args.annotation), file=sys.stderr)
         sys.exit()
     print('USED args.annotation:', args.annotation, file=sys.stderr)
@@ -2802,21 +2851,21 @@ def main():
     print('INPUT args.coverage:', args.coverage, file=sys.stderr)
     if args.coverage == 'LRGASP_DATA':
         if args.organism == 'mouse':
-            args.coverage = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
+            args.coverage = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES"
         elif args.organism == 'manatee':
-            args.coverage = "/home/wouter/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
+            args.coverage = "/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_manatee"
         else:
             print('ERROR: Coverage Directory cannot be set to "LRGASP Data" when Organism is set to "Custom"')
             sys.exit()
     elif args.coverage == 'NA':
         args.coverage = None
     else:
-        args.coverage = os.path.abspath(os.path.join("/home/wouter/LongTREC_LRGASP_Platform/uploads/coverage_files", args.coverage_dir))
+        args.coverage = os.path.abspath(os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/uploads/coverage_files", args.coverage_dir))
     print('USED args.coverage:', args.coverage, file=sys.stderr)
 
     if args.dataset2 != 'NA':
         print('INPUT args.isoforms2:', args.isoforms2, file=sys.stderr)
-        args.isoforms2 = os.path.join("/home/wouter/LongTREC_LRGASP_Platform/", args.isoforms2)
+        args.isoforms2 = os.path.join("/home/julen/longbench/LongTREC_LRGASP_Platform/", args.isoforms2)
         if not os.path.isfile(args.isoforms2):
             print("ERROR: Input isoforms2 {0} doesn't exist. Abort!".format(args.isoforms2), file=sys.stderr)
             sys.exit()

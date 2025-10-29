@@ -1,0 +1,22 @@
+# Flask app dependencies
+flask
+flask_sqlalchemy
+flask_login
+flask_wtf
+flask_bcrypt
+Werkzeug
+
+# Scientific and data dependencies
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+requests
+pysam
+
+# Bioinformatics libraries
+biopython
+bx-python
+git+https://github.com/chapmanb/bcbb.git@master#subdirectory=gff
+gffutils
