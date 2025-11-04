@@ -1,0 +1,42 @@
+=== Challenge 1 Analysis Started ===
+Job ID: 30
+Results Directory: sqanti_results/30
+Started at: 2025-10-31T16:11:51.110443
+Organism: 
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py 30  sqanti_results/30/results_file1/subset_4000.fa LRGASP_DATA LRGASP_DATA default NA LRGASP_DATA LRGASP_DATA LRGASP_DATA PacBio cDNA test NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA --gtf
+
+==================================================
+Script Output:
+==================================================
+
+/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py:87: DeprecationWarning: Use shutil.which instead of find_executable
+  if distutils.spawn.find_executable(GTF2GENEPRED_PROG) is None:
+/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py:90: DeprecationWarning: Use shutil.which instead of find_executable
+  if distutils.spawn.find_executable(GFFREAD_PROG) is None:
+/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py:122: DeprecationWarning: Use shutil.which instead of find_executable
+  RSCRIPTPATH = distutils.spawn.find_executable('Rscript')
+Rscript (R) version 4.5.1 (2025-06-13)
+ERROR: genome fasta LRGASP_DATA doesn't exist. Abort!
+CHALLENGE 1 BEGINT SLETJESSS
+Utilites: /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities_ch1
+dataset 2: False
+WARNING: Experiment JSON wasn't provided. A fake one will be used (you can find it in utilities/experiment_dummy.json. This won't have an effect on the evaluation, but you will find the made-up attributes in your report titles.
+WARNING: Entry JSON wasn't provided. A fake one will be used (you can find it in utilities/entry_dummy.json. This won't have an effect on the evaluation, but you will find the made-up attributes in your report titles.
+INPUT args.genome: LRGASP_DATA
+Organism c1 script:
+ERROR: User should provide genome file when organism is set to custom...
+
+==================================================
+Script finished with return code: 0
+
+==================================================
+=== ERROR ===
+Error in job 30: No HTML report found in sqanti_results/30/results_file1/
+==================================================

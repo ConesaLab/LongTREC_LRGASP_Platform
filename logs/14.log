@@ -1,0 +1,396 @@
+=== Challenge 3 Analysis Started ===
+Job ID: 14
+Results Directory: sqanti_results/14
+Started at: 2025-10-29T14:40:47.175020
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+Dataset 2: False
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py 14 sqanti_results/14/results_file1/subset_4000.fa mouse PacBio cDNA test NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA PacBio cDNA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA NA NA NA NA NA
+
+==================================================
+Script Output:
+==================================================
+
+INFO:__main__:This is an info message sqanti
+ERROR:__main__:This is an error message sqanti
+Hello world sqanti
+Hello world sqanti
+STATUS: Importing Modules...
+Rscript (R) version 4.5.1 (2025-06-13)
+Cleaning up isoform IDs...
+Cleaned up isoform fasta file written to: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.renamed.fasta
+INPUT args.annotation: LRGASP_DATA
+USED args.annotation: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf
+INPUT args.coverage: LRGASP_DATA
+USED args.coverage: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES
+**** Running SQANTI3...
+PROGRESS: 5
+STARTING CYCLE 1/1
+args.dir: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1
+**** Parsing provided files....
+PROGRESS: 20
+Reading genome fasta /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta....
+test 1
+****Aligning reads with Minimap2...
+/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1
+[DEBUG] Running command:
+minimap2 -ax splice --secondary=no -C5 -uf -t 10 /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.renamed.fasta |  samtools view  -F2048 -h > /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_corrected.sam
+
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+[M::mm_idx_gen::27.372*1.65] collected minimizers
+[M::mm_idx_gen::31.399*2.72] sorted minimizers
+[M::main::31.399*2.72] loaded/built the index for 175 target sequence(s)
+[M::mm_mapopt_update::33.453*2.61] mid_occ = 650
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 175
+[M::mm_idx_stat::34.754*2.55] distinct minimizers: 163972911 (36.46% are singletons); average occurrences: 5.538; average spacing: 3.005; total length: 2728646816
+[M::worker_pipeline::38.524*3.11] mapped 3860 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -ax splice --secondary=no -C5 -uf -t 10 /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.renamed.fasta
+[M::main] Real time: 38.613 sec; CPU: 119.878 sec; Peak RSS: 17.078 GB
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+test for err_correct
+output written to /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_corrected.fasta
+test for SAM to GFF
+Skipping -_87 because unmapped.
+Skipping OTTMUST00000129883 because unmapped.
+Skipping OTTMUST00000129888 because unmapped.
+Skipping OTTMUST00000134592 because unmapped.
+Skipping OTTMUST00000170671 because unmapped.
+**** Predicting ORF sequences...
+PROGRESS: 30
+WARNING: Skipping ORF prediction. All isoforms will be non-coding!
+WARNING: All input isoforms were predicted as non-coding
+test 2
+**** Parsing Reference Transcriptome....
+STATUS: Parsing Reference Transcriptome...
+test 3
+**** Parsing Isoforms....
+PROGRESS: 40
+test 4
+test 5
+**** Reading Splice Junctions coverage files.
+Input pattern: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES.
+The following files found and to be read as junctions:
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep3SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep1SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep2SJ.out.tab
+694670 junctions read. 2820 junctions added to both strands because no strand information from STAR.
+**** Performing Classification of Isoforms....
+PROGRESS: 50
+Number of classified isoforms: 3855
+**** RT-switching computation....
+PROGRESS: 60
+Full-length read abundance files not provided.
+Isoforms expression files not provided.
+**** Writing output files....
+PROGRESS: 70
+STATUS: Running BUSCO...
+2025-10-29 15:42:31 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 10/29/2025 15:42:31 *****
+2025-10-29 15:42:31 INFO:	Configuring BUSCO with local environment
+2025-10-29 15:42:31 INFO:	Running transcriptome mode
+2025-10-29 15:42:31 INFO:	Downloading information on latest versions of BUSCO data...
+2025-10-29 15:42:33 INFO:	Input file is /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_corrected.fasta
+2025-10-29 15:42:33 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/eutheria_odb10.2024-01-08.tar.gz'
+2025-10-29 15:43:34 INFO:	Decompressing file '/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/busco_downloads/lineages/eutheria_odb10.tar.gz'
+2025-10-29 15:43:51 INFO:	Running BUSCO using lineage dataset eutheria_odb10 (eukaryota, 2024-01-08)
+2025-10-29 15:43:53 INFO:	Running 1 job(s) on metaeuk, starting at 10/29/2025 15:43:53
+2025-10-29 15:45:24 INFO:	[metaeuk]	1 of 1 task(s) completed
+2025-10-29 15:45:25 INFO:	***** Run HMMER on gene sequences *****
+2025-10-29 15:45:25 INFO:	Running 11366 job(s) on hmmsearch, starting at 10/29/2025 15:45:25
+2025-10-29 15:45:32 INFO:	[hmmsearch]	1137 of 11366 task(s) completed
+2025-10-29 15:45:39 INFO:	[hmmsearch]	2274 of 11366 task(s) completed
+2025-10-29 15:45:45 INFO:	[hmmsearch]	3410 of 11366 task(s) completed
+2025-10-29 15:45:49 INFO:	[hmmsearch]	4547 of 11366 task(s) completed
+2025-10-29 15:45:54 INFO:	[hmmsearch]	5683 of 11366 task(s) completed
+2025-10-29 15:46:05 INFO:	[hmmsearch]	6820 of 11366 task(s) completed
+2025-10-29 15:46:19 INFO:	[hmmsearch]	7957 of 11366 task(s) completed
+2025-10-29 15:46:32 INFO:	[hmmsearch]	9093 of 11366 task(s) completed
+2025-10-29 15:46:43 INFO:	[hmmsearch]	10230 of 11366 task(s) completed
+2025-10-29 15:46:59 INFO:	[hmmsearch]	11366 of 11366 task(s) completed
+2025-10-29 15:47:03 INFO:	2296 exons in total
+2025-10-29 15:47:03 INFO:	Extracting missing and fragmented buscos from the file refseq_db.faa...
+2025-10-29 15:49:43 INFO:	Running 1 job(s) on metaeuk, starting at 10/29/2025 15:49:43
+2025-10-29 15:52:51 INFO:	[metaeuk]	1 of 1 task(s) completed
+2025-10-29 15:52:51 INFO:	***** Run HMMER on gene sequences *****
+2025-10-29 15:52:51 INFO:	Running 9974 job(s) on hmmsearch, starting at 10/29/2025 15:52:51
+2025-10-29 15:52:58 INFO:	[hmmsearch]	998 of 9974 task(s) completed
+2025-10-29 15:53:04 INFO:	[hmmsearch]	1995 of 9974 task(s) completed
+2025-10-29 15:53:10 INFO:	[hmmsearch]	2993 of 9974 task(s) completed
+2025-10-29 15:53:16 INFO:	[hmmsearch]	3990 of 9974 task(s) completed
+2025-10-29 15:53:22 INFO:	[hmmsearch]	4987 of 9974 task(s) completed
+2025-10-29 15:53:29 INFO:	[hmmsearch]	5985 of 9974 task(s) completed
+2025-10-29 15:53:36 INFO:	[hmmsearch]	6982 of 9974 task(s) completed
+2025-10-29 15:53:42 INFO:	[hmmsearch]	7980 of 9974 task(s) completed
+2025-10-29 15:53:49 INFO:	[hmmsearch]	8977 of 9974 task(s) completed
+2025-10-29 15:54:03 INFO:	[hmmsearch]	9974 of 9974 task(s) completed
+2025-10-29 15:54:06 INFO:	40 candidate overlapping regions found
+2025-10-29 15:54:06 INFO:	2128 exons in total
+2025-10-29 15:54:06 INFO:	Results:	C:12.3%[S:11.6%,D:0.8%],F:1.7%,M:85.9%,n:11366
+
+2025-10-29 15:54:06 INFO:
+
+    ----------------------------------------------------
+    |Results from dataset eutheria_odb10                |
+    ----------------------------------------------------
+    |C:12.3%[S:11.6%,D:0.8%],F:1.7%,M:85.9%,n:11366     |
+    |1402    Complete BUSCOs (C)                        |
+    |1315    Complete and single-copy BUSCOs (S)        |
+    |87    Complete and duplicated BUSCOs (D)           |
+    |195    Fragmented BUSCOs (F)                       |
+    |9769    Missing BUSCOs (M)                         |
+    |11366    Total BUSCO groups searched               |
+    ----------------------------------------------------
+2025-10-29 15:54:06 INFO:	BUSCO analysis done. Total running time: 693 seconds
+2025-10-29 15:54:06 INFO:	Results written in /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/BUSCO_analysis
+2025-10-29 15:54:06 INFO:	For assistance with interpreting the results, please consult the userguide: https://busco.ezlab.org/busco_userguide.html
+
+2025-10-29 15:54:06 INFO:	Visit this page https://gitlab.com/ezlab/busco#how-to-cite-busco to see how to cite BUSCO
+2025-10-29 15:54:06 INFO:	Thank you for using BUSCO! Anonymous usage data is gathered to improve the tool. You may opt out with --opt-out-run-stats.
+PROGRESS: 80
+STATUS: Generating Report...
+**** Generating SQANTI3 report....
+ [1] "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_classification.txt"
+ [2] "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_junctions.txt"
+ [3] "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities"
+ [4] "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/../results_file1/lrgasp_platform_challenge_3_Rdata"
+ [5] "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/BUSCO_results.tsv"
+ [6] "mouse"
+ [7] "testyour_tool"
+ [8] "PacBio"
+ [9] "cDNA"
+[10] "NA"
+[11] "NA"
+[12] "NA"
+[13] "NA"
+[14] "NA"
+[15] "NA"
+[16] "NA"
+[17] "NA"
+[18] "NA"
+[19] "NA"
+[20] "NA"
+[21] "NA"
+[22] "PacBio"
+[23] "cDNA"
+[24] "NA"
+[25] "NA"
+[26] "NA"
+[27] "NA"
+[28] "NA"
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: generics
+
+Attaching package: ‘generics’
+
+The following objects are masked from ‘package:base’:
+
+    as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+    setequal, union
+
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, sd, var, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+    unsplit, which.max, which.min
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:utils’:
+
+    findMatches
+
+The following objects are masked from ‘package:base’:
+
+    expand.grid, I, unname
+
+Loading required package: IRanges
+Loading required package: GenomicRanges
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘Biostrings’
+
+The following object is masked from ‘package:base’:
+
+    strsplit
+
+Evaluation script has being run.
+Data used for  test  pipeline are
+ /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_classification.txt
+ /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_junctions.txt
+[1] "Evaluation without a reference transcriptome"
+[1] "SIRVs evaluation"
+[1] "out.dir: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/../results_file1/lrgasp_platform_challenge_3_Rdata"
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.1.0     ✔ tidyr     1.3.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ lubridate::%within%()    masks IRanges::%within%()
+✖ readr::col_factor()      masks scales::col_factor()
+✖ dplyr::collapse()        masks Biostrings::collapse(), IRanges::collapse()
+✖ dplyr::combine()         masks BiocGenerics::combine()
+✖ purrr::compact()         masks XVector::compact()
+✖ dplyr::desc()            masks IRanges::desc()
+✖ purrr::discard()         masks scales::discard()
+✖ tidyr::expand()          masks S4Vectors::expand()
+✖ dplyr::filter()          masks stats::filter()
+✖ dplyr::first()           masks S4Vectors::first()
+✖ dplyr::lag()             masks stats::lag()
+✖ BiocGenerics::Position() masks ggplot2::Position(), base::Position()
+✖ purrr::reduce()          masks GenomicRanges::reduce(), IRanges::reduce()
+✖ dplyr::rename()          masks S4Vectors::rename()
+✖ lubridate::second()      masks S4Vectors::second()
+✖ lubridate::second<-()    masks S4Vectors::second<-()
+✖ dplyr::slice()           masks XVector::slice(), IRanges::slice()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘gridExtra’
+
+The following object is masked from ‘package:dplyr’:
+
+    combine
+
+The following object is masked from ‘package:BiocGenerics’:
+
+    combine
+
+
+Attaching package: ‘grid’
+
+The following object is masked from ‘package:Biostrings’:
+
+    pattern
+
+
+Attaching package: ‘plotly’
+
+The following object is masked from ‘package:XVector’:
+
+    slice
+
+The following object is masked from ‘package:IRanges’:
+
+    slice
+
+The following object is masked from ‘package:S4Vectors’:
+
+    rename
+
+The following object is masked from ‘package:ggplot2’:
+
+    last_plot
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following object is masked from ‘package:graphics’:
+
+    layout
+
+[1] "Scripts loaded"
+
+
+processing file: Evaluation_metrics.Rmd
+1/27
+2/27 [setup]
+3/27
+4/27 [libraries]
+5/27
+6/27 [table]
+7/27
+8/27 [global metrics]
+9/27
+10/27 [length distr.]
+11/27
+12/27 [SJ coverage]
+13/27
+14/27 [coverage comparison]
+15/27
+16/27 [BUSCO]
+17/27
+18/27 [sirv_SIRV]
+19/27
+20/27 [Transcripts fig]
+21/27
+22/27 [Length fig]
+23/27
+24/27 [SJ fig]
+25/27
+26/27 [BUSCO fig]
+27/27
+output file: Evaluation_metrics.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS Evaluation_metrics.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_Evaluation_report.html --lua-filter /home/julen/R/x86_64-pc-linux-gnu-library/4.5/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /home/julen/R/x86_64-pc-linux-gnu-library/4.5/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --section-divs --template /home/julen/R/x86_64-pc-linux-gnu-library/4.5/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=bootstrap --mathjax --variable 'mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /tmp/RtmpJyAxN9/rmarkdown-strcae345b0cde14.html
+
+Output created: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_Evaluation_report.html
+Removing temporary files....
+PROGRESS: 95
+SQANTI3 complete in 811.5982620760005 sec.
+GTF2GENEPRED_PROG is:  /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities/gtfToGenePred
+INPUT args.genome: LRGASP_DATA
+USED args.genome: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta
+INPUT args.isoforms: sqanti_results/14/results_file1/subset_4000.fa
+USED args.isoforms: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.fa
+Write arguments to /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3.params.txt...
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+[M::mm_idx_gen::27.231*1.64] collected minimizers
+[M::mm_idx_gen::31.277*2.72] sorted minimizers
+[M::main::31.277*2.72] loaded/built the index for 175 target sequence(s)
+Progress: 10% (index built)
+[M::mm_mapopt_update::33.321*2.61] mid_occ = 650
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 175
+[M::mm_idx_stat::34.676*2.55] distinct minimizers: 163972911 (36.46% are singletons); average occurrences: 5.538; average spacing: 3.005; total length: 2728646816
+[M::worker_pipeline::38.776*3.12] mapped 3860 sequences
+Progress: 50% (mapping reads)
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -ax splice --secondary=no -C5 -uf -t 10 /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.renamed.fasta
+[M::main] Real time: 38.849 sec; CPU: 121.147 sec; Peak RSS: 17.081 GB
+Minimap2 completed successfully.
+test1
+test2
+test if not args.genename
+test2
+The files used are: args.isoforms: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/subset_4000.renamed.fasta ; args.genome: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta ; args.annotation: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf
+test2
+/usr/bin/Rscript /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities/SQANTI3_Evaluation_run.R /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_classification.txt /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/lrgasp_platform_challenge_3_junctions.txt /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/../results_file1/lrgasp_platform_challenge_3_Rdata /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/14/results_file1/BUSCO_results.tsv mouse testyour_tool PacBio cDNA NA NA NA NA NA NA NA NA NA NA NA NA PacBio cDNA NA NA NA NA NA
+
+==================================================
+Script finished with return code: 0
+Report copied from sqanti_results/14/results_file1/lrgasp_platform_challenge_3_Evaluation_report.html to: static/report_14.html
+
+==================================================
+=== Challenge 3 Analysis Completed Successfully ===
+Completed at: 2025-10-29T14:54:20.342952
+==================================================

@@ -1,0 +1,27 @@
+=== Challenge 1 Analysis Started ===
+Job ID: 22
+Results Directory: sqanti_results/22
+Started at: 2025-10-30T10:57:57.532342
+Organism: mouse
+Platform: PacBio
+Tool: testc1
+Library Preparation: cDNA
+Data Category: NA
+==================================================
+
+Executing command:
+python 22 lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py mouse uploads/job_22/transcriptome_file1/gencode.vM38.annotation.gtf LRGASP_DATA LRGASP_DATA default NA LRGASP_DATA LRGASP_DATA LRGASP_DATA PacBio cDNA testc1 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA --gtf
+
+==================================================
+Script Output:
+==================================================
+
+python: can't open file '/home/julen/longbench/LongTREC_LRGASP_Platform/22': [Errno 2] No such file or directory
+
+==================================================
+Script finished with return code: 2
+
+==================================================
+=== ERROR ===
+Error in job 22: Script exited with code 2
+==================================================

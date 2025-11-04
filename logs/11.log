@@ -1,0 +1,40 @@
+=== Challenge 3 Analysis Started ===
+Job ID: 11
+Results Directory: sqanti_results/11
+Started at: 2025-10-29T14:27:10.387499
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+Dataset 2: False
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py sqanti_results/11/results_file1/gencode.vM38.pc_transcripts.fa mouse PacBio cDNA test NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA PacBio cDNA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA NA NA NA NA NA
+
+==================================================
+Script Output:
+==================================================
+
+INFO:__main__:This is an info message sqanti
+ERROR:__main__:This is an error message sqanti
+Hello world sqanti
+Hello world sqanti
+Rscript (R) version 4.5.1 (2025-06-13)
+STATUS: Importing Modules...
+GTF2GENEPRED_PROG is:  /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities/gtfToGenePred
+Traceback (most recent call last):
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 2963, in <module>
+    main()
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 2752, in main
+    if args.experiment_json is None:
+AttributeError: 'Namespace' object has no attribute 'experiment_json'
+
+==================================================
+Script finished with return code: 1
+
+==================================================
+=== ERROR ===
+Error in job 11: Script exited with code 1
+==================================================

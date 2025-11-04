@@ -1,0 +1,16 @@
+=== Challenge 1 Analysis Started ===
+Job ID: 20
+Results Directory: sqanti_results/20
+Started at: 2025-10-30T10:56:01.422749
+Organism: mouse
+Platform: PacBio
+Tool: testc1
+Library Preparation: cDNA
+Data Category: NA
+==================================================
+
+
+==================================================
+=== ERROR ===
+Error in job 20: sequence item 1: expected str instance, int found
+==================================================

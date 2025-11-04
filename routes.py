@@ -451,254 +451,131 @@ def run_script_challenge1():
                 shutil.rmtree(directory_path)
             os.makedirs(directory_path)
 
-        job_upload_dir = f"uploads/job_{job_id}"
         job_results_dir = f"sqanti_results/{job_id}"
+        results_file1_dir = f"{job_results_dir}/results_file1"
+        results_file2_dir = f"{job_results_dir}/results_file2"
         
-        replace_directory(job_upload_dir)
-        replace_directory(f"{job_upload_dir}/transcriptome_file1")
-        replace_directory(f"{job_upload_dir}/transcriptome_file2")
-        replace_directory(f"{job_results_dir}/results_file1")
-        replace_directory(f"{job_results_dir}/results_file2")
-        replace_directory(f"{job_upload_dir}/coverage_files")
-        replace_directory(f"{job_upload_dir}/coverage_files2")
+        replace_directory(results_file1_dir)
+        replace_directory(results_file2_dir)
+        replace_directory(f"{results_file1_dir}/coverage_files")
+        replace_directory(f"{results_file2_dir}/coverage_files")
 
+        # Get organism
         organism = request.form.get('organism')
 
         # Process transcriptome file 1
-        transcriptome_file = request.files.get('file')
-        transcriptome_path = os.path.join(job_upload_dir, 'transcriptome_file1', transcriptome_file.filename)
-        transcriptome_file.save(transcriptome_path)
-
-        # Process transcriptome file 2
-        transcriptome_file2 = request.files.get('file-2')
-        if transcriptome_file2 and transcriptome_file2.filename != '':
-            transcriptome_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', transcriptome_file2.filename)
-            transcriptome_file2.save(transcriptome_path2)
-        else:
-            transcriptome_path2 = 'NA'
-
+        file = request.files.get('file', default='')
+        if file.filename == '':
+            return jsonify({'error': 'No valid transcriptome file uploaded'}), 400
+        transcriptome_path = os.path.join(results_file1_dir, file.filename)
+        file.save(transcriptome_path)
 
         # Process annotation file 1
         annotation_file = request.form.get('annotation')
-        if annotation_file == 'default':
+        if annotation_file == 'custom':
+            annotation_file = request.files.get('annotation_file')
+            annotation_path = os.path.join(results_file1_dir, annotation_file.filename)
+            annotation_file.save(annotation_path)
+        elif annotation_file == 'default':
             annotation_path = 'LRGASP_DATA'
         else:
-            annotation_file = request.files.get('annotation_file')
-            annotation_path = os.path.join(job_upload_dir, 'transcriptome_file1', annotation_file.filename)
-            annotation_file.save(annotation_path)
-
-        # Process annotation file 2
-        annotation_file2 = request.form.get('annotation2')
-        if annotation_file2 != None:
-            if annotation_file2 == 'default':
-                annotation_path2 = 'LRGASP_DATA'
-            else:
-                annotation_file2 = request.files.get('annotation_file-2')
-                annotation_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', annotation_file2.filename)
-                annotation_file2.save(annotation_path2)
-        else:
-            annotation_path2 = 'NA'
-
+            annotation_path = 'NA'
 
         # Process reference file 1
         reference_file = request.files.get('reference_file')
         if reference_file and reference_file.filename != '':
-            reference_path = os.path.join(job_upload_dir, 'transcriptome_file1', reference_file.filename)
+            reference_path = os.path.join(results_file1_dir, reference_file.filename)
             reference_file.save(reference_path)
         else:
             reference_path = 'LRGASP_DATA'
 
-        # Process reference file 2
-        reference_file2 = request.files.get('reference_file-2')
-        if reference_file2 != None:
-            if reference_file2 and reference_file2.filename != '':
-                reference_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', reference_file2.filename)
-                reference_file2.save(reference_path2)
-            else:
-                reference_path2 = 'LRGASP_DATA'
-        else:
-            reference_path2 = 'NA'
-
-
         # Process coverage directory 1
         coverage = request.form.get('coverage_directory')
         if coverage == 'custom':
-            coverage_files = request.files.getlist('coverage_directory[]')
+            coverage_files = request.files.getlist('coverage_dir')
             coverage_dir = coverage_files[0].filename.split('/')[0]
-            replace_directory(os.path.join(job_upload_dir, "coverage_files", coverage_dir))
+            replace_directory(os.path.join(results_file1_dir, "coverage_files", coverage_dir))
             for cov_file in coverage_files:
-                coverage_path = os.path.join(job_upload_dir, 'coverage_files', cov_file.filename)
+                coverage_path = os.path.join(results_file1_dir, 'coverage_files', cov_file.filename)
                 cov_file.save(coverage_path)
+            coverage_dir = os.path.join(results_file1_dir, "coverage_files", coverage_dir)
+        elif coverage == 'default':
+            coverage = 'LRGASP_DATA'
+            coverage_dir = 'LRGASP_DATA'
         else:
+            coverage = 'NA'
             coverage_dir = 'NA'
-
-        # Process coverage directory 2
-        coverage2 = request.form.get('coverage_directory-2')
-        if coverage2 == 'custom':
-            coverage_files2 = request.files.getlist('coverage_directory_2[]')
-            coverage_dir2 = coverage_files2[0].filename.split('/')[0]
-            replace_directory(os.path.join(job_upload_dir, "coverage_files2", coverage_dir2))
-            for cov_file in coverage_files2:
-                coverage_path2 = os.path.join(job_upload_dir, 'coverage_files2', cov_file.filename)
-                cov_file.save(coverage_path2)
-        else:
-            coverage_dir2 = 'NA'
-            coverage2 = 'NA'
-
 
         # Process CAGE file 1
         cage_file = request.form.get('cage')
-        if cage_file == 'default':
+        if cage_file == 'custom':
+            cage_file = request.files.get('cage_file')
+            cage_path = os.path.join(results_file1_dir, cage_file.filename)
+            cage_file.save(cage_path)
+        elif cage_file == 'default':
             cage_path = 'LRGASP_DATA'
         elif cage_file == 'reference':
             cage_path = 'reference'
         else:
-            cage_file = request.files.get('cage_file')
-            cage_path = os.path.join(job_upload_dir, 'transcriptome_file1', cage_file.filename)
-            cage_file.save(cage_path)
+            cage_path = 'NA'
 
-        # Process CAGE file 2
-        cage_file2 = request.form.get('cage2')
-        if cage_file2 != None:
-            if cage_file2 == 'default':
-                cage_path2 = 'LRGASP_DATA'
-            elif cage_file2 == 'reference':
-                cage_path2 = 'reference'
-            else:
-                cage_file2 = request.files.get('cage_file2')
-                cage_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', cage_file2.filename)
-                cage_file2.save(cage_path2)
+        # Process polyA peak file 1
+        polyA_peak_file = request.form.get('polyA')
+        print('##############PolyA Peak: ' + polyA_peak_file)
+        if polyA_peak_file == 'custom':
+            polyA_peak_file = request.files.get('polyA_file')
+            polyA_peak_path = os.path.join(results_file1_dir, polyA_peak_file.filename)
+            polyA_peak_file.save(polyA_peak_path)
+        elif polyA_peak_file == 'default':
+            polyA_peak_path = 'LRGASP_DATA'
+        elif polyA_peak_file == 'reference':
+            polyA_peak_path = 'reference'
         else:
-            cage_path2 = 'NA'
+            polyA_peak_path = 'NA'
 
-
-        # Process quant file 1
-        quant_file = request.form.get('quant')
-        if quant_file == 'default':
-            quant_path = 'LRGASP_DATA'
-        elif quant_file == 'reference':
-            quant_path = 'reference'
+        # Process polyA motif list file 1
+        polyA_motif_file = request.form.get('polyA_motif')
+        if polyA_motif_file == 'custom':
+            polyA_motif_file = request.files.get('polyA_motif_file')
+            polyA_motif_path = os.path.join(results_file1_dir, polyA_motif_file.filename)
+            polyA_motif_file.save(polyA_motif_path)
+        elif polyA_motif_file == 'default':
+            polyA_motif_path = 'LRGASP_DATA'
         else:
-            quant_file = request.files.get('quant_file')
-            quant_path = os.path.join(job_upload_dir, 'transcriptome_file1', quant_file.filename)
-            quant_file.save(quant_path)
+            polyA_motif_path = 'NA'
 
-        # Process quant file 2
-        quant_file2 = request.form.get('quant2')
-        if quant_file2 != None:
-            if quant_file2 == 'default':
-                quant_path2 = 'LRGASP_DATA'
-            elif quant_file2 == 'reference':
-                quant_path2 = 'reference'
-            else:
-                quant_file2 = request.files.get('quant_file2')
-                quant_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', quant_file2.filename)
-                quant_file2.save(quant_path2)
-        else:
-            quant_path2 = 'NA'
-
-
-        # Process polyA file 1
-        poly_A_file = request.form.get('polyA')
-        if poly_A_file == 'default':
-            poly_A_path = 'LRGASP_DATA'
-        elif poly_A_file == 'NA':
-            poly_A_path = 'NA'
-        else:
-            poly_A_file = request.files.get('polyA_file')
-            poly_A_path = os.path.join(job_upload_dir, 'transcriptome_file1', poly_A_file.filename)
-            poly_A_file.save(poly_A_path)
-
-        # Process polyA file 2
-        poly_A_file2 = request.form.get('polyA2')
-        if poly_A_file2 != None:
-            if poly_A_file2 == 'default':
-                poly_A_path2 = 'LRGASP_DATA'
-            elif poly_A_file2 == 'NA':
-                poly_A_path2 = 'NA'
-            else:
-                poly_A_file2 = request.files.get('polyA_file2')
-                poly_A_path2 = os.path.join(job_upload_dir, 'transcriptome_file2', poly_A_file2.filename)
-                poly_A_file2.save(poly_A_path2)
-        else:
-            poly_A_path2 = 'NA'
-
-
-        # Get metadata
-        tool = request.form.get('tool')
+        # Get metadata for dataset 1
         platform = request.form.get('platform')
-        platform2 = request.form.get('platform-2')
-        if platform2 == None:
-            platform2 = 'NA'
         library_preparation = request.form.get('library_preparation')
-        library_preparation2 = request.form.get('library_preparation-2')
-        if library_preparation2 == None:
-            library_preparation2 = 'NA'
+        tool = request.form.get('tool')
         data_category = request.form.get('data_category')
-        data_category2 = request.form.get('data_category-2')
-        if data_category2 == None:
-            data_category2 = 'NA'
 
-
-        # Process SIRV list files
-        sirv_list = request.files.get('sirv_file')
+        # Process SIRV list file 1
+        sirv_list = request.files.get('sirv_file1')
         if sirv_list:
-            file_path = os.path.join(job_upload_dir, 'sirv_list', sirv_list.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            file_path = os.path.join(results_file1_dir, sirv_list.filename)
             sirv_list.save(file_path)
             sirv_list = file_path
         else:
             sirv_list = "NA"
 
-        sirv_list2 = request.files.get('sirv_file2')
-        if sirv_list2:
-            file_path = os.path.join(job_upload_dir, 'sirv_list2', sirv_list2.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            sirv_list2.save(file_path)
-            sirv_list2 = file_path
-        else:
-            sirv_list2 = "NA"
-
-
-        # Process ERCC list files
-        ercc_list = request.files.get('ercc_file')
+        # Process ERCC list file 1
+        ercc_list = request.files.get('ercc_file1')
         if ercc_list:
-            file_path = os.path.join(job_upload_dir, 'ercc_list', ercc_list.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            file_path = os.path.join(results_file1_dir, ercc_list.filename)
             ercc_list.save(file_path)
             ercc_list = file_path
         else:
             ercc_list = "NA"
 
-        ercc_list2 = request.files.get('ercc_file2')
-        if ercc_list2:
-            file_path = os.path.join(job_upload_dir, 'ercc_list2', ercc_list2.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            ercc_list2.save(file_path)
-            ercc_list2 = file_path
-        else:
-            ercc_list2 = "NA"
-
-
-        # Process Sequin list files
-        sequin_list = request.files.get('sequin_file')
+        # Process Sequin list file 1
+        sequin_list = request.files.get('sequin_file1')
         if sequin_list:
-            file_path = os.path.join(job_upload_dir, 'sequin_list', sequin_list.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            file_path = os.path.join(results_file1_dir, sequin_list.filename)
             sequin_list.save(file_path)
             sequin_list = file_path
         else:
             sequin_list = "NA"
-
-        sequin_list2 = request.files.get('sequin_file2')
-        if sequin_list2:
-            file_path = os.path.join(job_upload_dir, 'sequin_list2', sequin_list2.filename)
-            os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            sequin_list2.save(file_path)
-            sequin_list2 = file_path
-        else:
-            sequin_list2 = "NA"
-
 
         # Process comparison options
         selected_comparisons = request.form.getlist('comparison-dropdown')
@@ -728,16 +605,142 @@ def run_script_challenge1():
             comp_Spectra = 'Spectra' if 'Spectra' in selected_comparisons else 'NA'
             comp_TALON_LAPA = 'TALON_LAPA' if 'TALON_LAPA' in selected_comparisons else 'NA'
             comp_StringTie2 = 'StringTie2' if 'StringTie2' in selected_comparisons else 'NA'
+
+        # Check if dataset2 is provided
+        dataset2 = request.form.get('dataset2')
+        if dataset2 != 'none':
+            dataset2 = True
+        else:
+            dataset2 = False
+
+        # Process transcriptome file 2
+        transcriptome_file2 = request.files.get('file-2')
+        if transcriptome_file2 and transcriptome_file2.filename != '':
+            transcriptome_path2 = os.path.join(results_file2_dir, transcriptome_file2.filename)
+            transcriptome_file2.save(transcriptome_path2)
+        else:
+            transcriptome_path2 = 'NA'
+
+        # Process annotation file 2
+        annotation_file_2 = request.form.get('annotation-2')
+        if annotation_file_2 == 'custom':
+            annotation_file_2 = request.files.get('annotation_file2')
+            annotation_path_2 = os.path.join(results_file2_dir, annotation_file_2.filename)
+            if dataset2:
+                annotation_file_2.save(annotation_path_2)
+        elif annotation_file_2 == 'default':
+            annotation_path_2 = 'LRGASP_DATA'
+        else:
+            annotation_path_2 = 'NA'
+
+        # Process reference file 2
+        reference_file_2 = request.files.get('reference_file2')
+        if reference_file_2 and reference_file_2.filename != '':
+            reference_path_2 = os.path.join(results_file2_dir, reference_file_2.filename)
+            if dataset2:
+                reference_file_2.save(reference_path_2)
+        else:
+            reference_path_2 = 'LRGASP_DATA'
+
+        # Process coverage directory 2
+        coverage2 = request.form.get('coverage_directory2')
+        if coverage2 == 'custom':
+            coverage_files2 = request.files.getlist('coverage_dir2')
+            coverage_dir2 = coverage_files2[0].filename.split('/')[0]
+            replace_directory(os.path.join(results_file2_dir, "coverage_files", coverage_dir2))
+            for cov_file in coverage_files2:
+                coverage_path = os.path.join(results_file2_dir, 'coverage_files', cov_file.filename)
+                if dataset2:
+                    cov_file.save(coverage_path)
+            coverage_dir2 = os.path.join(results_file2_dir, "coverage_files", coverage_dir2)
+        elif coverage2 == 'default':
+            coverage2 = 'LRGASP_DATA'
+            coverage_dir2 = 'LRGASP_DATA'
+        else:
+            coverage2 = 'NA'
+            coverage_dir2 = 'NA'
+
+        # Process CAGE file 2
+        cage_file2 = request.form.get('cage2')
+        if cage_file2 == 'custom':
+            cage_file2 = request.files.get('cage_file2')
+            cage_path2 = os.path.join(results_file2_dir, cage_file2.filename)
+            if dataset2:
+                cage_file2.save(cage_path2)
+        elif cage_file2 == 'default':
+            cage_path2 = 'LRGASP_DATA'
+        elif cage_file2 == 'reference':
+            cage_path2 = 'reference'
+        else:
+            cage_path2 = 'NA'
+
+        # Process polyA peak file 2
+        polyA_peak_file2 = request.form.get('polyA_peak2')
+        if polyA_peak_file2 == 'custom':
+            polyA_peak_file2 = request.files.get('polyA_peak_file2')
+            polyA_peak_path2 = os.path.join(results_file2_dir, polyA_peak_file2.filename)
+            if dataset2:
+                polyA_peak_file2.save(polyA_peak_path2)
+        elif polyA_peak_file2 == 'default':
+            polyA_peak_path2 = 'LRGASP_DATA'
+        elif polyA_peak_file2 == 'reference':
+            polyA_peak_path2 = 'reference'
+        else:
+            polyA_peak_path2 = 'NA'
+
+        # Process polyA motif list file 2
+        polyA_motif_file2 = request.form.get('polyA_motif2')
+        if polyA_motif_file2 == 'custom':
+            polyA_motif_file2 = request.files.get('polyA_motif_file2')
+            polyA_motif_path2 = os.path.join(results_file2_dir, polyA_motif_file2.filename)
+            if dataset2:
+                polyA_motif_file2.save(polyA_motif_path2)
+        elif polyA_motif_file2 == 'default':
+            polyA_motif_path2 = 'LRGASP_DATA'
+        else:
+            polyA_motif_path2 = 'NA'
+
+        # Get metadata for dataset 2
+        platform2 = request.form.get('platform2', 'NA')
+        library_preparation2 = request.form.get('library_preparation2', 'NA')
+        data_category2 = request.form.get('data_category2', 'NA')
+
+        # Process SIRV list file 2
+        sirv_list2 = request.files.get('sirv_file2')
+        if sirv_list2:
+            file_path = os.path.join(results_file2_dir, sirv_list2.filename)
+            sirv_list2.save(file_path)
+            sirv_list2 = file_path
+        else:
+            sirv_list2 = "NA"
+
+        # Process ERCC list file 2
+        ercc_list2 = request.files.get('ercc_file2')
+        if ercc_list2:
+            file_path = os.path.join(results_file2_dir, ercc_list2.filename)
+            ercc_list2.save(file_path)
+            ercc_list2 = file_path
+        else:
+            ercc_list2 = "NA"
+
+        # Process Sequin list file 2
+        sequin_list2 = request.files.get('sequin_file2')
+        if sequin_list2:
+            file_path = os.path.join(results_file2_dir, sequin_list2.filename)
+            sequin_list2.save(file_path)
+            sequin_list2 = file_path
+        else:
+            sequin_list2 = "NA"
         
         thread = Thread(target=run_script_process_challenge1, args=(
             job.id, job_results_dir, organism, transcriptome_path, annotation_path, reference_path,
-            coverage, coverage_dir, cage_path, quant_path, poly_A_path, platform,
+            coverage, coverage_dir, cage_path, polyA_peak_path, polyA_motif_path, platform,
             library_preparation, tool, data_category, sirv_list, ercc_list, sequin_list,
             comparison, comp_bambu, comp_FLAIR, comp_Lyric, comp_IsoTools, comp_Mandalorion,
             comp_Iso_IB, comp_FLAMES, comp_IsoQuant, comp_Spectra, comp_TALON_LAPA,
-            comp_StringTie2, transcriptome_path2, annotation_path2, reference_path2,
-            coverage2, coverage_dir2, cage_path2, quant_path2, poly_A_path2, platform2,
-            library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2
+            comp_StringTie2, transcriptome_path2, annotation_path_2, reference_path_2,
+            coverage2, coverage_dir2, cage_path2, polyA_peak_path2, polyA_motif_path2, platform2,
+            library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2, dataset2
         ))
         thread.daemon = True
         thread.start()
@@ -753,13 +756,13 @@ def run_script_challenge1():
         return jsonify({'error': str(e)}), 500
 
 def run_script_process_challenge1(job_id, job_results_dir, organism, transcriptome_path, annotation_path, reference_path,
-                                 coverage, coverage_dir, cage_path, quant_path, poly_A_path, platform,
+                                 coverage, coverage_dir, cage_path, polyA_peak_path, polyA_motif_path, platform,
                                  library_preparation, tool, data_category, sirv_list, ercc_list, sequin_list,
                                  comparison, comp_bambu, comp_FLAIR, comp_Lyric, comp_IsoTools, comp_Mandalorion,
                                  comp_Iso_IB, comp_FLAMES, comp_IsoQuant, comp_Spectra, comp_TALON_LAPA,
-                                 comp_StringTie2, transcriptome_path2, annotation_path2, reference_path2,
-                                 coverage2, coverage_dir2, cage_path2, quant_path2, poly_A_path2, platform2,
-                                 library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2):
+                                 comp_StringTie2, transcriptome_path2, annotation_path_2, reference_path_2,
+                                 coverage2, coverage_dir2, cage_path2, polyA_peak_path2, polyA_motif_path2, platform2,
+                                 library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2, dataset2):
     """Background process for Challenge 1"""
     with app.app_context():
         job = Job.query.get(job_id)
@@ -781,6 +784,7 @@ def run_script_process_challenge1(job_id, job_results_dir, organism, transcripto
                 log_file.write(f"Tool: {tool}\n")
                 log_file.write(f"Library Preparation: {library_preparation}\n")
                 log_file.write(f"Data Category: {data_category}\n")
+                log_file.write(f"Dataset 2: {dataset2}\n")
                 log_file.write(f"{'='*50}\n\n")
                 log_file.flush()
                 
@@ -790,21 +794,24 @@ def run_script_process_challenge1(job_id, job_results_dir, organism, transcripto
                 
                 script_path = "lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py"
                 
-                # Build command arguments
+                # Build command arguments matching the script's expected parameter order
                 cmd_args = [
-                    'python', script_path,
+                    'python', script_path, str(job_id),
                     organism, transcriptome_path, annotation_path, reference_path, coverage, coverage_dir,
-                    cage_path, quant_path, poly_A_path, platform, library_preparation, tool, data_category,
+                    cage_path, polyA_peak_path, polyA_motif_path, platform, library_preparation, tool, data_category,
                     sirv_list, ercc_list, sequin_list, comparison, comp_bambu, comp_FLAIR, comp_Lyric,
                     comp_IsoTools, comp_Mandalorion, comp_Iso_IB, comp_FLAMES, comp_IsoQuant, comp_Spectra,
-                    comp_TALON_LAPA, comp_StringTie2, transcriptome_path2, annotation_path2, reference_path2,
-                    coverage2, coverage_dir2, cage_path2, quant_path2, poly_A_path2, platform2,
-                    library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2, '--gtf'
+                    comp_TALON_LAPA, comp_StringTie2, transcriptome_path2, annotation_path_2, reference_path_2,
+                    coverage2, coverage_dir2, cage_path2, polyA_peak_path2, polyA_motif_path2, platform2,
+                    library_preparation2, data_category2, sirv_list2, ercc_list2, sequin_list2
                 ]
                 
                 # Add --dataset2 flag if second dataset is provided
-                if transcriptome_path2 != 'NA':
-                    cmd_args.insert(-1, '--dataset2')  # Insert before '--gtf'
+                if dataset2:
+                    cmd_args.append('--dataset2')
+                
+                # Add --gtf flag (always included for Challenge 1)
+                cmd_args.append('--gtf')
                 
                 log_file.write(f"Executing command:\n{' '.join(cmd_args)}\n\n")
                 log_file.write(f"{'='*50}\n")
@@ -816,7 +823,8 @@ def run_script_process_challenge1(job_id, job_results_dir, organism, transcripto
                     cmd_args,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
-                    text=True
+                    text=True,
+                    cwd=os.getcwd()
                 )
                 
                 for line in process.stdout:

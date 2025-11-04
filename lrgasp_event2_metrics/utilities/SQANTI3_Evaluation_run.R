@@ -9,14 +9,14 @@
 
 #********************** Taking arguments from python script
 
-results_file1 <- "/Users/woutermaessen/PycharmProjects/lrgasp_platform/sqanti_results/results_file1/"
-results_file1 <- '/Users/woutermaessen/Desktop/ConesaInternship/Platform_runs/Challenge3/manatee/StringTie2_cDNA_PB_LO.fasta/results_file1/'
+results_file1 <- "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/"
+#results_file1 <- '/Users/woutermaessen/Desktop/ConesaInternship/Platform_runs/Challenge3/manatee/StringTie2_cDNA_PB_LO.fasta/results_file1/'
 
 
 
 args <- c(paste0(results_file1, "lrgasp_platform_challenge_3_classification.txt"),
           paste0(results_file1, "lrgasp_platform_challenge_3_junctions.txt"),
-          "/Users/woutermaessen/PycharmProjects/lrgasp_platform/lrgasp_event2_metrics/utilities",
+          "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities",
           paste0(results_file1, "lrgasp_platform_challenge_3_Rdata"),
           paste0(results_file1, "BUSCO_results.tsv"),
           "manatee",
@@ -45,7 +45,7 @@ args <- c(paste0(results_file1, "lrgasp_platform_challenge_3_classification.txt"
 
 args <- c(paste0(results_file1, "lrgasp_platform_challenge_3_classification.txt"),
           paste0(results_file1, "lrgasp_platform_challenge_3_junctions.txt"),
-          "/Users/woutermaessen/PycharmProjects/lrgasp_platform/lrgasp_event2_metrics/utilities",
+          "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities",
           paste0(results_file1, "lrgasp_platform_challenge_3_Rdata"),
           paste0(results_file1, "BUSCO_results.tsv"),
           "manatee",
@@ -61,9 +61,9 @@ args <- c(paste0(results_file1, "lrgasp_platform_challenge_3_classification.txt"
           "NA",
           "NA",
           "NA",
-          "/Users/woutermaessen/PycharmProjects/lrgasp_platform/sqanti_results/results_file2/lrgasp_platform_challenge_3_classification.txt",
-          "/Users/woutermaessen/PycharmProjects/lrgasp_platform/sqanti_results/results_file2/lrgasp_platform_challenge_3_junctions.txt",
-          "/Users/woutermaessen/PycharmProjects/lrgasp_platform/sqanti_results/results_file2/BUSCO_results.tsv",
+          "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file2/lrgasp_platform_challenge_3_classification.txt",
+          "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file2/lrgasp_platform_challenge_3_junctions.txt",
+          "/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file2/BUSCO_results.tsv",
           "PacBio",
           "cDNA",
           "LO",

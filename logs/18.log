@@ -1,0 +1,29 @@
+=== Challenge 1 Analysis Started ===
+Job ID: 18
+Results Directory: sqanti_results/18
+Started at: 2025-10-30T10:49:08.926503
+Organism: mouse
+Platform: PacBio
+Tool: TESTC1
+Library Preparation: cDNA
+Data Category: NA
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py mouse uploads/job_18/transcriptome_file1/subset_4000.fa LRGASP_DATA LRGASP_DATA default NA LRGASP_DATA LRGASP_DATA LRGASP_DATA PacBio cDNA TESTC1 NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA --gtf
+
+==================================================
+Script Output:
+==================================================
+
+Unable to import cupcake.tofu! Please make sure you install cupcake.
+CHALLENGE 1 BEGINT SLETJESSS
+Utilites: /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities_ch1
+
+==================================================
+Script finished with return code: 255
+
+==================================================
+=== ERROR ===
+Error in job 18: Script exited with code 255
+==================================================

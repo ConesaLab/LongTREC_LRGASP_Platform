@@ -1,0 +1,246 @@
+=== Challenge 3 Analysis Started ===
+Job ID: 6
+Started at: 2025-10-29T11:00:39.109236
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+Dataset 2: False
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/transcriptome_file1/gencode.vM38.pc_transcripts.fa mouse PacBio cDNA test NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA PacBio cDNA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA NA NA NA NA NA
+
+==================================================
+Script Output:
+==================================================
+
+INFO:__main__:This is an info message sqanti
+ERROR:__main__:This is an error message sqanti
+Hello world sqanti
+Hello world sqanti
+Rscript (R) version 4.5.1 (2025-06-13)
+Cleaning up isoform IDs...
+Cleaned up isoform fasta file written to: /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/transcriptome_file1/gencode.vM38.pc_transcripts.renamed.fasta
+INPUT args.annotation: LRGASP_DATA
+USED args.annotation: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf
+INPUT args.coverage: LRGASP_DATA
+USED args.coverage: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES
+**** Running SQANTI3...
+PROGRESS: 5
+STARTING CYCLE 1/1
+args.dir: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1
+**** Parsing provided files....
+PROGRESS: 20
+Reading genome fasta /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta....
+test 1
+****Aligning reads with Minimap2...
+/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1
+[DEBUG] Running command:
+minimap2 -ax splice --secondary=no -C5 -uf -t 10 /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/transcriptome_file1/gencode.vM38.pc_transcripts.renamed.fasta |  samtools view  -F2048 -h > /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/lrgasp_platform_challenge_3_corrected.sam
+
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+[M::mm_idx_gen::27.487*1.66] collected minimizers
+[M::mm_idx_gen::31.559*2.72] sorted minimizers
+[M::main::31.559*2.72] loaded/built the index for 175 target sequence(s)
+[M::mm_mapopt_update::33.658*2.62] mid_occ = 650
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 175
+[M::mm_idx_stat::34.973*2.56] distinct minimizers: 163972911 (36.46% are singletons); average occurrences: 5.538; average spacing: 3.005; total length: 2728646816
+[M::worker_pipeline::93.095*7.14] mapped 66668 sequences
+[M::main] Version: 2.24-r1122
+[M::main] CMD: minimap2 -ax splice --secondary=no -C5 -uf -t 10 /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/transcriptome_file1/gencode.vM38.pc_transcripts.renamed.fasta
+[M::main] Real time: 93.181 sec; CPU: 664.577 sec; Peak RSS: 18.093 GB
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+samtools: /home/julen/anaconda3/envs/longbench/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+test for err_correct
+output written to /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/lrgasp_platform_challenge_3_corrected.fasta
+test for SAM to GFF
+Skipping -_16 because unmapped.
+Skipping -_44 because unmapped.
+Skipping OTTMUST00000090104 because unmapped.
+Skipping -_138 because unmapped.
+Skipping -_653 because unmapped.
+Skipping -_764 because unmapped.
+Skipping -_813 because unmapped.
+Skipping OTTMUST00000168883 because unmapped.
+Skipping -_1143 because unmapped.
+Skipping -_1166 because unmapped.
+Skipping -_1197 because unmapped.
+Skipping -_1201 because unmapped.
+Skipping -_1267 because unmapped.
+Skipping -_1270 because unmapped.
+Skipping -_1304 because unmapped.
+Skipping -_1342 because unmapped.
+Skipping -_1414 because unmapped.
+Skipping OTTMUST00000129883 because unmapped.
+Skipping OTTMUST00000129884 because unmapped.
+Skipping OTTMUST00000129885 because unmapped.
+Skipping OTTMUST00000129886 because unmapped.
+Skipping OTTMUST00000129887 because unmapped.
+Skipping OTTMUST00000129888 because unmapped.
+Skipping OTTMUST00000129889 because unmapped.
+Skipping OTTMUST00000129890 because unmapped.
+Skipping OTTMUST00000129892 because unmapped.
+Skipping OTTMUST00000129893 because unmapped.
+Skipping OTTMUST00000129895 because unmapped.
+Skipping OTTMUST00000129896 because unmapped.
+Skipping OTTMUST00000129897 because unmapped.
+Skipping OTTMUST00000129898 because unmapped.
+Skipping OTTMUST00000129900 because unmapped.
+Skipping OTTMUST00000133379 because unmapped.
+Skipping OTTMUST00000133380 because unmapped.
+Skipping OTTMUST00000133381 because unmapped.
+Skipping OTTMUST00000133383 because unmapped.
+Skipping OTTMUST00000133384 because unmapped.
+Skipping -_2301 because unmapped.
+Skipping -_2523 because unmapped.
+Skipping -_2525 because unmapped.
+Skipping -_2644 because unmapped.
+Skipping OTTMUST00000037783 because unmapped.
+Skipping OTTMUST00000130089 because unmapped.
+Skipping OTTMUST00000130090 because unmapped.
+Skipping OTTMUST00000130110 because unmapped.
+Skipping OTTMUST00000130016 because unmapped.
+Skipping OTTMUST00000130131 because unmapped.
+Skipping OTTMUST00000130132 because unmapped.
+Skipping OTTMUST00000130137 because unmapped.
+Skipping OTTMUST00000130138 because unmapped.
+Skipping OTTMUST00000130141 because unmapped.
+Skipping OTTMUST00000130152 because unmapped.
+Skipping OTTMUST00000130174 because unmapped.
+Skipping OTTMUST00000130189 because unmapped.
+Skipping OTTMUST00000130197 because unmapped.
+Skipping OTTMUST00000130199 because unmapped.
+Skipping OTTMUST00000130180 because unmapped.
+Skipping OTTMUST00000130181 because unmapped.
+Skipping OTTMUST00000130184 because unmapped.
+Skipping OTTMUST00000130185 because unmapped.
+Skipping OTTMUST00000130217 because unmapped.
+Skipping OTTMUST00000130219 because unmapped.
+Skipping OTTMUST00000130221 because unmapped.
+Skipping OTTMUST00000130223 because unmapped.
+Skipping OTTMUST00000130226 because unmapped.
+Skipping OTTMUST00000134753 because unmapped.
+Skipping OTTMUST00000134774 because unmapped.
+Skipping OTTMUST00000134814 because unmapped.
+Skipping OTTMUST00000134822 because unmapped.
+Skipping OTTMUST00000170497 because unmapped.
+Skipping OTTMUST00000134478 because unmapped.
+Skipping OTTMUST00000134479 because unmapped.
+Skipping OTTMUST00000134482 because unmapped.
+Skipping OTTMUST00000134484 because unmapped.
+Skipping OTTMUST00000134505 because unmapped.
+Skipping OTTMUST00000134506 because unmapped.
+Skipping OTTMUST00000134511 because unmapped.
+Skipping OTTMUST00000134512 because unmapped.
+Skipping OTTMUST00000134515 because unmapped.
+Skipping OTTMUST00000134516 because unmapped.
+Skipping OTTMUST00000134518 because unmapped.
+Skipping OTTMUST00000134519 because unmapped.
+Skipping OTTMUST00000134520 because unmapped.
+Skipping OTTMUST00000134521 because unmapped.
+Skipping OTTMUST00000134522 because unmapped.
+Skipping OTTMUST00000134523 because unmapped.
+Skipping OTTMUST00000134524 because unmapped.
+Skipping OTTMUST00000134525 because unmapped.
+Skipping OTTMUST00000134526 because unmapped.
+Skipping OTTMUST00000134536 because unmapped.
+Skipping OTTMUST00000134537 because unmapped.
+Skipping OTTMUST00000134538 because unmapped.
+Skipping OTTMUST00000134539 because unmapped.
+Skipping OTTMUST00000134540 because unmapped.
+Skipping OTTMUST00000134542 because unmapped.
+Skipping OTTMUST00000134543 because unmapped.
+Skipping OTTMUST00000134545 because unmapped.
+Skipping OTTMUST00000134547 because unmapped.
+Skipping OTTMUST00000134548 because unmapped.
+Skipping OTTMUST00000134549 because unmapped.
+Skipping OTTMUST00000134550 because unmapped.
+Skipping OTTMUST00000134559 because unmapped.
+Skipping OTTMUST00000134587 because unmapped.
+Skipping OTTMUST00000134591 because unmapped.
+Skipping OTTMUST00000134592 because unmapped.
+Skipping OTTMUST00000134636 because unmapped.
+Skipping OTTMUST00000134637 because unmapped.
+Skipping OTTMUST00000134640 because unmapped.
+Skipping OTTMUST00000134641 because unmapped.
+Skipping OTTMUST00000134651 because unmapped.
+Skipping OTTMUST00000134653 because unmapped.
+Skipping OTTMUST00000134654 because unmapped.
+Skipping OTTMUST00000134656 because unmapped.
+Skipping OTTMUST00000134657 because unmapped.
+Skipping OTTMUST00000134658 because unmapped.
+Skipping OTTMUST00000134677 because unmapped.
+Skipping OTTMUST00000134680 because unmapped.
+Skipping OTTMUST00000134681 because unmapped.
+Skipping OTTMUST00000134684 because unmapped.
+Skipping OTTMUST00000134686 because unmapped.
+Skipping OTTMUST00000134687 because unmapped.
+Skipping OTTMUST00000134688 because unmapped.
+Skipping OTTMUST00000134689 because unmapped.
+Skipping OTTMUST00000134690 because unmapped.
+Skipping OTTMUST00000134691 because unmapped.
+Skipping OTTMUST00000170671 because unmapped.
+Skipping OTTMUST00000170059 because unmapped.
+Skipping OTTMUST00000169863 because unmapped.
+Skipping -_3732 because unmapped.
+Skipping OTTMUST00000132546 because unmapped.
+Skipping OTTMUST00000132548 because unmapped.
+Skipping OTTMUST00000133483 because unmapped.
+Skipping OTTMUST00000133487 because unmapped.
+Skipping OTTMUST00000133489 because unmapped.
+Skipping -_3925 because unmapped.
+Skipping OTTMUST00000165624 because unmapped.
+**** Predicting ORF sequences...
+PROGRESS: 30
+WARNING: Skipping ORF prediction. All isoforms will be non-coding!
+WARNING: All input isoforms were predicted as non-coding
+test 2
+**** Parsing Reference Transcriptome....
+STATUS: Parsing Reference Transcriptome...
+test 3
+**** Parsing Isoforms....
+PROGRESS: 40
+test 4
+test 5
+**** Reading Splice Junctions coverage files.
+Input pattern: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES.
+The following files found and to be read as junctions:
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep3SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep1SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep2SJ.out.tab
+694670 junctions read. 2820 junctions added to both strands because no strand information from STAR.
+**** Performing Classification of Isoforms....
+PROGRESS: 50
+Number of classified isoforms: 66532
+**** RT-switching computation....
+PROGRESS: 60
+Full-length read abundance files not provided.
+Isoforms expression files not provided.
+**** Writing output files....
+PROGRESS: 70
+STATUS: Running BUSCO...
+2025-10-29 12:06:26 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 10/29/2025 12:06:26 *****
+2025-10-29 12:06:26 INFO:	Configuring BUSCO with local environment
+2025-10-29 12:06:26 INFO:	Running transcriptome mode
+2025-10-29 12:06:26 INFO:	Downloading information on latest versions of BUSCO data...
+2025-10-29 12:06:28 INFO:	Input file is /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/lrgasp_platform_challenge_3_corrected.fasta
+2025-10-29 12:06:28 INFO:	Downloading file 'https://busco-data.ezlab.org/v5/data/lineages/eutheria_odb10.2024-01-08.tar.gz'
+2025-10-29 12:07:30 INFO:	Decompressing file '/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/busco_downloads/lineages/eutheria_odb10.tar.gz'
+2025-10-29 12:07:47 INFO:	Running BUSCO using lineage dataset eutheria_odb10 (eukaryota, 2024-01-08)
+2025-10-29 12:07:49 INFO:	Running 1 job(s) on metaeuk, starting at 10/29/2025 12:07:49
+2025-10-29 12:30:10 INFO:	[metaeuk]	1 of 1 task(s) completed
+2025-10-29 12:38:40 INFO:	***** Run HMMER on gene sequences *****
+2025-10-29 12:38:40 INFO:	Running 11366 job(s) on hmmsearch, starting at 10/29/2025 12:38:40
+2025-10-29 12:40:19 INFO:	[hmmsearch]	1137 of 11366 task(s) completed
+2025-10-29 12:41:58 INFO:	[hmmsearch]	2274 of 11366 task(s) completed
+2025-10-29 12:43:23 INFO:	[hmmsearch]	3410 of 11366 task(s) completed
+2025-10-29 12:44:23 INFO:	[hmmsearch]	4547 of 11366 task(s) completed
+2025-10-29 12:45:30 INFO:	[hmmsearch]	5683 of 11366 task(s) completed
+2025-10-29 12:48:12 INFO:	[hmmsearch]	6820 of 11366 task(s) completed

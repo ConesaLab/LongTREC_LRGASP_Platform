@@ -1,0 +1,29 @@
+=== Challenge 1 Analysis Started ===
+Job ID: 29
+Results Directory: sqanti_results/29
+Started at: 2025-10-31T16:09:59.018007
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge1.py 29 mouse sqanti_results/29/results_file1/gencode.v49.annotation.gtf LRGASP_DATA LRGASP_DATA default NA LRGASP_DATA LRGASP_DATA LRGASP_DATA PacBio cDNA test NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA --gtf
+
+==================================================
+Script Output:
+==================================================
+
+CHALLENGE 1 BEGINT SLETJESSS
+Utilites: /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities_ch1
+Unable to import err_correct_w_genome or sam_to_gff3.py! Please make sure cDNA_Cupcake/sequence/ is in $PYTHONPATH.
+
+==================================================
+Script finished with return code: 255
+
+==================================================
+=== ERROR ===
+Error in job 29: Script exited with code 255
+==================================================

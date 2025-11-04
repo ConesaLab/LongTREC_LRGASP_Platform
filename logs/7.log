@@ -1,0 +1,104 @@
+=== Challenge 3 Analysis Started ===
+Job ID: 7
+Results Directory: sqanti_results/7
+Started at: 2025-10-29T11:55:36.475900
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+Dataset 2: False
+==================================================
+
+Executing command:
+python lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py uploads/job_7/transcriptome_file1/subset_4000.fa mouse PacBio cDNA test NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA PacBio cDNA NA LRGASP_DATA LRGASP_DATA LRGASP_DATA LRGASP_DATA NA NA NA NA NA NA NA NA NA NA NA
+
+==================================================
+Script Output:
+==================================================
+
+INFO:__main__:This is an info message sqanti
+ERROR:__main__:This is an error message sqanti
+Hello world sqanti
+Hello world sqanti
+Rscript (R) version 4.5.1 (2025-06-13)
+Cleaning up isoform IDs...
+Cleaned up isoform fasta file written to: /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/job_7/transcriptome_file1/subset_4000.renamed.fasta
+INPUT args.annotation: LRGASP_DATA
+USED args.annotation: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_gencode_vM28_sirvs.mouse.gtf
+INPUT args.coverage: LRGASP_DATA
+USED args.coverage: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES
+**** Running SQANTI3...
+PROGRESS: 5
+STARTING CYCLE 1/1
+args.dir: /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1
+**** Parsing provided files....
+PROGRESS: 20
+Reading genome fasta /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta....
+test 1
+Error corrected FASTA /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/lrgasp_platform_challenge_3_corrected.fasta already exists. Using it...
+**** Predicting ORF sequences...
+PROGRESS: 30
+WARNING: Skipping ORF prediction. All isoforms will be non-coding!
+WARNING: All input isoforms were predicted as non-coding
+test 2
+**** Parsing Reference Transcriptome....
+STATUS: Parsing Reference Transcriptome...
+/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/refAnnotation_lrgasp_platform_challenge_3.genePred already exists. Using it.
+test 3
+**** Parsing Isoforms....
+PROGRESS: 40
+test 4
+test 5
+**** Reading Splice Junctions coverage files.
+Input pattern: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES.
+The following files found and to be read as junctions:
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep3SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep1SJ.out.tab
+/home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/gold_std_ES/es_rep2SJ.out.tab
+694670 junctions read. 2820 junctions added to both strands because no strand information from STAR.
+**** Performing Classification of Isoforms....
+PROGRESS: 50
+Number of classified isoforms: 66532
+**** RT-switching computation....
+PROGRESS: 60
+Full-length read abundance files not provided.
+Isoforms expression files not provided.
+**** Writing output files....
+PROGRESS: 70
+STATUS: Running BUSCO...
+2025-10-29 12:58:01 INFO:	***** Start a BUSCO v6.0.0 analysis, current time: 10/29/2025 12:58:01 *****
+2025-10-29 12:58:01 INFO:	Configuring BUSCO with local environment
+2025-10-29 12:58:01 INFO:	Running transcriptome mode
+2025-10-29 12:58:01 ERROR:	Error in BUSCO configuration: A run with the name /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/BUSCO_analysis already exists...
+	If you are sure you wish to overwrite existing files, please use the -f (force) option
+2025-10-29 12:58:01 INFO:	Thank you for using BUSCO! Anonymous usage data is gathered to improve the tool. You may opt out with --opt-out-run-stats.
+STATUS: Importing Modules...
+GTF2GENEPRED_PROG is:  /home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/utilities/gtfToGenePred
+INPUT args.genome: LRGASP_DATA
+USED args.genome: /home/julen/longbench/LongTREC_LRGASP_Platform/LONGTrec_LRGASP_Platform/lrgasp_grcm39_sirvs.fasta
+INPUT args.isoforms: uploads/job_7/transcriptome_file1/subset_4000.fa
+USED args.isoforms: /home/julen/longbench/LongTREC_LRGASP_Platform/uploads/job_7/transcriptome_file1/subset_4000.fa
+Write arguments to /home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/lrgasp_platform_challenge_3.params.txt...
+test1
+test2
+test if not args.genename
+test2
+Traceback (most recent call last):
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 2953, in <module>
+    main()
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 2937, in main
+    run(args)
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 2257, in run
+    busco_tsv1 = run_BUSCO(corrFASTA, args.cpus, os.getcwd())
+  File "/home/julen/longbench/LongTREC_LRGASP_Platform/lrgasp_event2_metrics/sqanti3_lrgasp.challenge3.py", line 496, in run_BUSCO
+    summary = open(summary_file, "r")
+FileNotFoundError: [Errno 2] No such file or directory: '/home/julen/longbench/LongTREC_LRGASP_Platform/sqanti_results/results_file1/BUSCO_analysis/short_summary.specific.eutheria_odb10.BUSCO_analysis.txt'
+
+==================================================
+Script finished with return code: 1
+
+==================================================
+=== ERROR ===
+Error in job 7: Script exited with code 1
+==================================================

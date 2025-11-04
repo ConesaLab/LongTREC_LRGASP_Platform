@@ -1,0 +1,17 @@
+=== Challenge 3 Analysis Started ===
+Job ID: 13
+Results Directory: sqanti_results/13
+Started at: 2025-10-29T14:39:42.983494
+Organism: mouse
+Platform: PacBio
+Tool: test
+Library Preparation: cDNA
+Data Category: NA
+Dataset 2: False
+==================================================
+
+
+==================================================
+=== ERROR ===
+Error in job 13: sequence item 2: expected str instance, int found
+==================================================
