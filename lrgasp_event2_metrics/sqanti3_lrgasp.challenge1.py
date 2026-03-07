@@ -7,7 +7,7 @@
 __author__  = "francisco.pardo.palacios@gmail.com"
 __version__ = 'LRGASP_v1.2'  # Python 3.7
 
-print('CHALLENGE 1 BEGIN JOB')
+print('CHALLENGE 1 BEGIN')
 
 import pdb
 import os, re, sys, subprocess, timeit, glob, copy
@@ -18,7 +18,6 @@ import bisect
 import argparse
 import math
 import numpy as np
-from scipy import mean
 from collections import defaultdict, Counter, namedtuple
 from collections.abc import Iterable
 from csv import DictWriter, DictReader
@@ -822,7 +821,7 @@ def expression_parser(expressionFile):
     if len(exp_paths)>1:
         for k in exp_all:
             exp_all[k] = list(flatten(exp_all[k]))
-            exp_dict[k] = mean(exp_all[k])
+            exp_dict[k] = np.matrix.mean(exp_all[k])
         return exp_dict
     else:
         exp_dict=exp_all
