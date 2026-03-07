@@ -18,5 +18,5 @@ pysam
 # Bioinformatics libraries
 biopython
 bx-python
-git+https://github.com/chapmanb/bcbb.git@master#subdirectory=gff
+bcbio-gff
 gffutils
