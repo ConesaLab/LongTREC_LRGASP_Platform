@@ -125,7 +125,11 @@ def run_script_challenge1():
 
     # Get file and form data from the request
     transcriptome_file = request.files.get('file')
-    transcriptome_path = os.path.join(app.config['UPLOAD_FOLDER'], 'transcriptome_file1', transcriptome_file.filename)
+    if not transcriptome_file or transcriptome_file.filename == '':
+        return jsonify({"error": "Please upload a transcriptome file to run the job."}), 400
+    upload_dir = os.path.join(app.config['UPLOAD_FOLDER'], 'transcriptome_file1')
+    os.makedirs(upload_dir, exist_ok=True)
+    transcriptome_path = os.path.join(upload_dir, transcriptome_file.filename)
     transcriptome_file.save(transcriptome_path)
 
     # Get file and form data from the request
