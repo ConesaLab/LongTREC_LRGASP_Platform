@@ -1339,6 +1339,15 @@ function start_progress(event) {
             source.onerror = function (event) {
                 source.close();
             };
+        },
+        error: function(xhr) {
+            // Hide overlay and display error message
+            document.getElementById('overlay').style.display = 'none';
+            if (xhr.responseJSON && xhr.responseJSON.error) {
+                alert(xhr.responseJSON.error);
+            } else {
+                alert("An error occurred during submission.");
+            }
         }
     });
 }
