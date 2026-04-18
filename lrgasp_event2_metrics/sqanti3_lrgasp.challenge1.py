@@ -7,7 +7,7 @@
 __author__  = "francisco.pardo.palacios@gmail.com"
 __version__ = 'LRGASP_v1.2'  # Python 3.7
 
-print('CHALLENGE 1 BEGINT SLETJESSS')
+print('Start Launching Executed Task')
 
 import pdb
 import os, re, sys, subprocess, timeit, glob, copy
