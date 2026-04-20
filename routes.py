@@ -175,7 +175,7 @@ def run_script_challenge1():
 
     coverage = request.form.get('coverage_directory')
     if coverage == 'custom':
-        coverage_files = request.files.getlist('coverage_directory[]')
+        coverage_files = request.files.getlist('coverage_directory')
         coverage_dir = coverage_files[0].filename.split('/')[0]
         replace_directory(os.path.join("uploads/coverage_files", coverage_dir))
         for cov_file in coverage_files:
